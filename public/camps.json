@@ -1,0 +1,68 @@
+[
+    {
+        "_id": 1,
+        "campName": "Healthy Heart Camp",
+        "image": "https://example.com/images/healthy-heart-camp.jpg",
+        "campFees": "Free",
+        "dateAndTime": "2024-07-15T10:00:00Z",
+        "location": "Community Center, Main Street, Springfield",
+        "healthcareProfessional": "Dr. John Smith, Cardiologist",
+        "participantCount": 50,
+        "description": "Join us for a comprehensive heart health check-up and learn how to keep your heart healthy with tips from experts."
+    },
+    {
+        "_id": 2,
+        "campName": "Diabetes Awareness Camp",
+        "image": "https://example.com/images/diabetes-awareness-camp.jpg",
+        "campFees": "$10",
+        "dateAndTime": "2024-08-20T09:00:00Z",
+        "location": "Health Plaza, 123 Wellness Road, Springfield",
+        "healthcareProfessional": "Dr. Jane Doe, Endocrinologist",
+        "participantCount": 30,
+        "description": "Get insights on diabetes management, diet, and exercise from leading endocrinologists. Free glucose testing available."
+    },
+    {
+        "_id": 3,
+        "campName": "Mental Health Workshop",
+        "image": "https://example.com/images/mental-health-workshop.jpg",
+        "campFees": "$20",
+        "dateAndTime": "2024-09-10T14:00:00Z",
+        "location": "Wellness Center, 456 Peace Avenue, Springfield",
+        "healthcareProfessional": "Dr. Emily Johnson, Psychologist",
+        "participantCount": 40,
+        "description": "An interactive workshop focusing on mental well-being, stress management, and coping strategies."
+    },
+    {
+        "_id": 4,
+        "campName": "Nutrition and Wellness Camp",
+        "image": "https://example.com/images/nutrition-wellness-camp.jpg",
+        "campFees": "$15",
+        "dateAndTime": "2024-10-05T10:00:00Z",
+        "location": "Green Park, Elm Street, Springfield",
+        "healthcareProfessional": "Dr. Sarah Lee, Nutritionist",
+        "participantCount": 60,
+        "description": "Learn about balanced diets, healthy eating habits, and get personalized nutrition advice from experts."
+    },
+    {
+        "_id": 5,
+        "campName": "Child Health Check-up Camp",
+        "image": "https://example.com/images/child-health-camp.jpg",
+        "campFees": "Free",
+        "dateAndTime": "2024-11-12T08:00:00Z",
+        "location": "Sunrise Clinic, 789 Kid Lane, Springfield",
+        "healthcareProfessional": "Dr. Michael Brown, Pediatrician",
+        "participantCount": 70,
+        "description": "Free health check-ups for children including vaccinations, growth monitoring, and health education."
+    },
+    {
+        "_id": 6,
+        "campName": "Senior Citizens Health Camp",
+        "image": "https://example.com/images/senior-health-camp.jpg",
+        "campFees": "$5",
+        "dateAndTime": "2024-12-01T09:00:00Z",
+        "location": "Elder Care Center, 321 Senior Road, Springfield",
+        "healthcareProfessional": "Dr. Robert Wilson, Geriatrician",
+        "participantCount": 40,
+        "description": "Comprehensive health services for seniors, including chronic disease management and mobility assistance."
+    }
+]

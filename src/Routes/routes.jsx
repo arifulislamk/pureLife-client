@@ -5,6 +5,7 @@ import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 import JoinUs from "../pages/JoinUs/JoinUs";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
+import CampDetails from "../pages/CampDetails/CampDetails";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: '/available-camps',
                 element: <AvailableCamps />
+            },
+            {
+                path: '/camp-details/:id',
+                element: <CampDetails />
             },
             {
                 path: '/join-us',
