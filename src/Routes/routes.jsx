@@ -6,12 +6,14 @@ import JoinUs from "../pages/JoinUs/JoinUs";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
 import CampDetails from "../pages/CampDetails/CampDetails";
+import PrivateRoutes from "./PrivateRoutes";
+import ErrorPage from "../pages/ErrorPage.jsx/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Main />, 
-        
+        element: <Main />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -23,8 +25,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/camps/:id',
-                element: <CampDetails />,
-                // loader: ({params})=> fetch(`http://localhost:5000/camps/${params.id}`)
+                element: <PrivateRoutes><CampDetails /></PrivateRoutes>,
             },
             {
                 path: '/join-us',
