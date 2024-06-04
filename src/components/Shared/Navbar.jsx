@@ -23,7 +23,14 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost text-xl">PureLife Health</Link>
+                <Link to='/' className=" text-xl"><img
+                    // className='hidden md:block'
+                    className=" rounded-2xl"
+                    src='https://i.ibb.co/fGQ9gfb/medical-logo.png'
+                    alt='logo'
+                    width='200'
+                    height='100'
+                /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -37,7 +44,7 @@ const Navbar = () => {
                             <div tabIndex={0} role="button" className=" m-1"><img className=" w-10 rounded-full" referrerPolicy="no-referrer" src={user?.photoURL} alt="" /></div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><Link >{user?.displayName ? user?.displayName : 'No Name Available'}</Link></li>
-                                <li><Link to='/dashborad'>DashBoard</Link></li>
+                                <li><Link to='/dashboard'>DashBoard</Link></li>
 
                                 <p className=" mt-6 ml-6 text-red-700 font-medium"><Link onClick={handleLogout}>LogOut</Link></p>
                             </ul>
