@@ -1,7 +1,9 @@
+import React from 'react';
+
 const AddCamp = () => {
     return (
         <div>
-            <h2>add camps</h2>
+
         </div>
     );
 };

@@ -9,10 +9,10 @@ import CampDetails from "../pages/CampDetails/CampDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import ErrorPage from "../pages/ErrorPage.jsx/ErrorPage";
 import DashBoard from "../Layout/DashBoard";
-import AddCamp from "../pages/DashBoard/AddCamp/AddCamp";
 import OrganizerProfile from "../pages/DashBoard/OrganizerProfile/OrganizerProfile";
 import ManageCamps from "../pages/DashBoard/ManageCamps/ManageCamps";
 import ManageRegisteredCamps from "../pages/DashBoard/ManageRegisteredCamps/ManageRegisteredCamps";
+import AddCamp from "../pages/DashBoard/AddCamp/AddCamp";
 
 const router = createBrowserRouter([
     {
@@ -48,23 +48,23 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashBoard />,
+        element: <PrivateRoutes><DashBoard /></PrivateRoutes>,
         children: [
             {
                 path: "addCamp",
-                element: <AddCamp />
+                element: <PrivateRoutes><AddCamp /></PrivateRoutes>
             },
             {
                 path: "organizer-profile",
-                element: <OrganizerProfile />
+                element: <PrivateRoutes><OrganizerProfile /></PrivateRoutes>
             },
             {
                 path: "manage-camps",
-                element: <ManageCamps />
+                element: <PrivateRoutes><ManageCamps /></PrivateRoutes>
             },
             {
                 path: "manage-registered-camps",
-                element: <ManageRegisteredCamps />
+                element: <PrivateRoutes><ManageRegisteredCamps /></PrivateRoutes>
             }
         ]
     },
