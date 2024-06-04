@@ -11,31 +11,26 @@ import JoinModalForm from './JoinModalForm'
 import { useForm } from 'react-hook-form'
 import useAxiosPublic from '../hooks/useAxiosPublic'
 import toast from 'react-hot-toast'
-import { useMutation } from '@tanstack/react-query'
 
-const JoinCampModal = ({ closeModal, isOpen, camps }) => {
+const JoinCampModal = ({ closeModal, isOpen, camps, refetch }) => {
     const axiosPublic = useAxiosPublic()
     const { register, handleSubmit } = useForm()
-    console.log(camps)
+    // console.log(camps, camps.participantCount)
 
-    const { mutateAsync } = useMutation({
-        mutationKey: ['participantUpdate'],
-        mutationFn: async (camps) => {
-            const { data } = await axiosPublic.patch('/updateParticipants', camps)
-            return data
-        }
-    })
     const handlebtn = async formData => {
-        const { campName, campFees, location, healthcareProfessional, participantName, participantEmail, participantPhone, participantAge, emergencyContact, gender } = formData
-        console.log(formData, campName, campFees, location, healthcareProfessional, participantName, participantEmail, participantPhone, participantAge, emergencyContact, gender)
+        // const { campName, campFees, location, healthcareProfessional, participantName, participantEmail, participantPhone, participantAge, emergencyContact, gender } = formData
+        // console.log(formData, campName, campFees, location, healthcareProfessional, participantName, participantEmail, participantPhone, participantAge, emergencyContact, gender)
 
 
         try {
             const { data } = await axiosPublic.post('/participant', formData)
             console.log(data)
+
             // await axiosPublic.patch('/updateParticipants', camps)
-            mutateAsync(camps)
+            await axiosPublic.patch(`/camps/participants/${camps?._id}`, camps)
             toast.success('You Successfully Join This Camp')
+            refetch()
+            closeModal()
         } catch (err) {
             console.log(err)
             toast.error('Three is issue!')

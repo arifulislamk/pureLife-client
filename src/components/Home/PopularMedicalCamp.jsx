@@ -14,19 +14,21 @@ const PopularMedicalCamp = () => {
     //         })
     // }, [])
 
-    const { data } = useQuery({
+    const { data: camps = [] , isLoading } = useQuery({
         queryKey: ['camps'],
         queryFn: async () => {
-            const { data } = await axiosPublic('/camps')
+            const { data } = await axiosPublic('/campsSix')
             return data
         }
     })
+
+    if(isLoading || camps.length < 1 ) return <p>loading</p>
     return (
         <div className=" mt-20">
             <h2 className=" text-5xl font-bold text-center mb-14">Popular Medical Camps</h2>
             <div className=" grid grid-cols-2 gap-5">
                 {
-                    data?.map((camp) =>
+                    camps.length > 0 && camps.map((camp) =>
                         <Link key={camp._id} to={`/camps/${camp._id}`} >
                             <div className="p-8 bg-base-100 shadow-xl rounded-3xl" >
                                 <div className="flex gap-3 ">

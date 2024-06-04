@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import JoinCampModal from "../../Modal/JoinCampModal";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -8,31 +8,34 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 const CampDetails = () => {
     // const camps = useLoaderData();
     const { id } = useParams();
-    console.log(id)
+    // console.log(id)
     const axiosPublic = useAxiosPublic()
-    const { data: camps = [] } = useQuery({
-        queryKey: ['camps'] ,
+    const { data: camps = [], isLoading, refetch } = useQuery({
+        queryKey: ['camps'],
         queryFn: async () => {
             const { data } = await axiosPublic.get(`/camps/${id}`)
             return data
         }
     })
-    
-    console.log(camps);
-    const { campName, image, campFees, dateAndTime, location, healthcareProfessional, participantCount, description } = camps;
 
+    // console.log(camps);
+    const { campName, image, campFees, dateAndTime, location, healthcareProfessional, participantCount, description } = camps;
+console.log(campName)
     const [isOpen, setIsOpen] = useState(false)
 
     const closeModal = () => {
         setIsOpen(false)
     }
-
+    if (isLoading || camps.length < 1) return <p> loading</p>
     return (
         <div>
             <div className="font-algeria mx-4 lg:mx-12 ">
-                <Helmet className="text-sm">
-                    <title >PureLife Health | {campName}</title>
-                </Helmet>
+                {
+                    camps.campName !== 'undefined' ? <Helmet className="text-sm">
+                        <title >{`PureLife Health | ${camps?.campName} `}</title>
+                    </Helmet> :
+                        ''
+                }
                 <div>
                     <img className="w-full lg:h-[550px] rounded-lg" src={image} alt="" />
                 </div>
@@ -55,6 +58,7 @@ const CampDetails = () => {
                         <JoinCampModal
                             isOpen={isOpen}
                             closeModal={closeModal}
+                            refetch={refetch}
                             camps={camps} />
                     </div>
                 </div>
