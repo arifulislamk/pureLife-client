@@ -1,42 +1,47 @@
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const PopularMedicalCamp = () => {
-    const [data, setData] = useState([])
-    useEffect(() => {
-        axios('/camps.json')
-            .then(data => {
-                setData(data.data)
-            })
-    }, [])
+
+    const axiosPublic = useAxiosPublic()
+    // const [data, setData] = useState([])
+    // useEffect(() => {
+    //     axios('http://localhost:5000/camps')
+    //         .then(data => {
+    //             setData(data.data)
+    //         })
+    // }, [])
+
+    const { data } = useQuery({
+        queryKey: ['camps'],
+        queryFn: async () => {
+            const { data } = await axiosPublic('/camps')
+            return data
+        }
+    })
     return (
         <div className=" mt-20">
             <h2 className=" text-5xl font-bold text-center mb-14">Popular Medical Camps</h2>
             <div className=" grid grid-cols-2 gap-5">
                 {
-                    data.map((camp, index) =>
-                        <Link key={index} to={`/camp-details/${camp._id}`} >
-                            <div className="p-4 bg-base-100 shadow-xl rounded-3xl" >
+                    data?.map((camp) =>
+                        <Link key={camp._id} to={`/camps/${camp._id}`} >
+                            <div className="p-8 bg-base-100 shadow-xl rounded-3xl" >
                                 <div className="flex gap-3 ">
                                     <div className=" w-4/5 ">
-                                        <img className=" w-full rounded-lg" src="https://i.ibb.co/1dWWDct/Free-Medical-Camp.jpg" alt="Album" />
+                                        <img className=" w-full rounded-lg" src={camp.image} alt="Album" />
                                     </div>
                                     <div className=" ">
                                         <p>Location: {camp.location}</p>
                                         <p>Fees: {camp.campFees}</p>
                                         <p>Date: {camp.dateAndTime}</p>
                                         <p>Participant : {camp.participantCount}</p>
-                                    </div>
-                                </div>
-                                <div className=" mt-14">
-                                    <h2 className="card-title mb-5">{camp.campName}</h2>
-                                    <p>{camp.healthcareProfessional}</p>
-                                    <p className="  ">{camp.description}</p>
-
-                                    <div className="card-actions justify-end">
-                                        <button className="btn btn-guest">Join Camp</button>
+                                        <div className=" mt-14">
+                                            <h2 className="card-title mb-5">{camp.campName}</h2>
+                                            <p>{camp.healthcareProfessional}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -25,10 +25,10 @@ const Carousel = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide><img className=' rounded-2xl' src="https://i.ibb.co/1dWWDct/Free-Medical-Camp.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className=' rounded-2xl' src="https://i.ibb.co/gm2wC38/Free-Medical-Checkup-Camp.png" alt="" /></SwiperSlide>
-                <SwiperSlide><img className=' rounded-2xl' src="https://i.ibb.co/gt6t8wW/maharashtra-day-medical-camp01.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className=' rounded-2xl' src="https://i.ibb.co/vsCNC2G/lucas-vasques-9vn-ACv-X2748-unsplash.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className=' rounded-2xl' src="https://i.ibb.co/9bKSSL1/cover-photo-1.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className=' rounded-2xl' src="https://i.ibb.co/zxN8VwF/cover-photo-3.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className=' rounded-2xl' src="https://i.ibb.co/Hhrbv5r/cover-photo-7.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img className=' rounded-2xl' src="https://i.ibb.co/q715s37/cover-photo-5.jpg" alt="" /></SwiperSlide>
                 
             </Swiper>
         </>

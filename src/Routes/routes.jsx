@@ -10,7 +10,8 @@ import CampDetails from "../pages/CampDetails/CampDetails";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Main />,
+        element: <Main />, 
+        
         children: [
             {
                 path: '/',
@@ -21,8 +22,9 @@ const router = createBrowserRouter([
                 element: <AvailableCamps />
             },
             {
-                path: '/camp-details/:id',
-                element: <CampDetails />
+                path: '/camps/:id',
+                element: <CampDetails />,
+                // loader: ({params})=> fetch(`http://localhost:5000/camps/${params.id}`)
             },
             {
                 path: '/join-us',
