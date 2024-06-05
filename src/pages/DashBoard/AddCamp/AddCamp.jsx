@@ -5,17 +5,20 @@ import { imageUpload } from '../../../utility';
 import { useMutation } from '@tanstack/react-query';
 // import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
-import axios from 'axios';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useNavigate } from 'react-router-dom';
 
 const AddCamp = () => {
     const { register, handleSubmit } = useForm()
     const [imagePreview, setImagePreview] = useState();
     const [imageText, setimageText] = useState('');
     const [image, setimage] = useState();
+    const { user } = useAuth()
 
-    // const axiosSecure = useAxiosSecure();
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure();
+    // const axiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -26,7 +29,7 @@ const AddCamp = () => {
     const { mutateAsync } = useMutation({
         mutationKey: ['capms'],
         mutationFn: async (capmsData) => {
-            const { data } = await axiosPublic.post('/camps', capmsData)
+            const { data } = await axiosSecure.post('/camps', capmsData)
             return data
         },
         onSuccess: () => {
@@ -34,17 +37,18 @@ const AddCamp = () => {
         }
     })
     const handlebtn = async formData => {
-        const data = { ...formData, dateAndTime: startDate, image }
+        const data = delete formData.pa
         console.log(data)
 
         try {
             // upload imagebb get url 
             const image_url = await imageUpload(image)
             console.log(image_url)
-            const campsData = { ...formData, dateAndTime: startDate, image_url }
-            
+            const campsData = { ...formData,participantCount: parseInt(0), dateAndTime: startDate, image:image_url , email: user?.email, }
+
             // post a camps 
             mutateAsync(campsData)
+            navigate('/dashboard/manage-camps')
         } catch (err) {
             console.log(err)
         }

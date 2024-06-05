@@ -11,7 +11,6 @@ const AddForm = ({
     handleImage,
     imagePreview,
     imageText, }) => {
-
     return (
         <div>
             <form onSubmit={handleSubmit(handlebtn)} className="font-open-sans card-body space-y-4 mb-6 border rounded-lg border-gray-400 md:w-5/6 mx-auto">
@@ -57,7 +56,12 @@ const AddForm = ({
                             <span className="label-text text-xl font-medium">participant count : </span>
                         </label>
                         <input
-                            {...register('participantCount')} type="text" name="participantCount" placeholder="participant count" className="input input-bordered" required />
+                            // {...register('participantCount')}
+                            readOnly
+                            defaultValue={0}
+                            id="number"
+                            type="number" 
+                            name="participantCount" className="input input-bordered" required />
                     </div>
                 </div>
                 <div className=" flex flex-col md:flex-row gap-3 ">
