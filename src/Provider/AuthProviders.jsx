@@ -12,6 +12,7 @@ import {
     updateProfile,
 } from 'firebase/auth'
 import app from '../firebase/firebase.config'
+import useAxiosPublic from '../hooks/useAxiosPublic'
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
@@ -19,7 +20,7 @@ const googleProvider = new GoogleAuthProvider()
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-
+    const axiosPublic = useAxiosPublic()
     const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -42,9 +43,9 @@ const AuthProvider = ({ children }) => {
 
     const logOut = async () => {
         setLoading(true)
-        // await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
-        //     withCredentials: true,
-        // })
+        await axiosPublic.get('/logout', {
+            withCredentials: true,
+        })
         return signOut(auth)
     }
 
@@ -56,18 +57,23 @@ const AuthProvider = ({ children }) => {
     }
 
     // {create token }
+    const getToken = async email => {
+        const { data } = axiosPublic.post('/jwt', { email }, { withCredentials: true })
+        console.log(data, 'datat from auth')
+        return data
+    }
 
     // {save user }
     // onAuthStateChange
-    
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser, 'user from AuthProvider')
             setUser(currentUser)
-            // if (currentUser) {
-            //     getToken(currentUser?.email)
-            //     saveUser(currentUser)
-            // }
+            if (currentUser) {
+                getToken(currentUser?.email)
+                // saveUser(currentUser)
+            }
             setLoading(false)
         })
         return () => {
