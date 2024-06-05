@@ -44,7 +44,7 @@ const AddCamp = () => {
             // upload imagebb get url 
             const image_url = await imageUpload(image)
             console.log(image_url)
-            const campsData = { ...formData,participantCount: parseInt(0), dateAndTime: startDate, image:image_url , email: user?.email, }
+            const campsData = { ...formData,participantCount: parseInt(0), dateAndTime: startDate, image:image_url , organizerEmail: user?.email, }
 
             // post a camps 
             mutateAsync(campsData)

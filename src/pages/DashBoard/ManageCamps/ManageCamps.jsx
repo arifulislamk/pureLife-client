@@ -20,6 +20,7 @@ const ManageCamps = () => {
         }
     })
     console.log(campsData)
+
     const { mutateAsync } = useMutation({
         mutationKey: ['camps'],
         mutationFn: async (id) => {
@@ -76,14 +77,18 @@ const ManageCamps = () => {
                     </thead>
                     <tbody>
                         {
-                            campsData.map((camp, index) => <tr key={camp._id}>
+                            campsData?.map((camp, index) => <tr key={camp._id}>
                                 <td>{index + 1}</td>
                                 <td>{camp.campName}</td>
-                                <td>{camp.dateAndTime}</td>
+                                <td> {new Date(camp.dateAndTime).toLocaleDateString('en-GB', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric'
+                                })}</td>
                                 <td>{camp.location}</td>
                                 <td>{camp.healthcareProfessional}</td>
-                                <td> <Link>
-                                    <button className="btn  hover:btn-info"><FaRegEdit className=" text-2xl" /></button>
+                                <td> <Link to={`/dashboard/update-camp/${camp._id}`}>
+                                    <button className="btn  hover:btn-info"><FaRegEdit className="text-2xl" /></button>
                                 </Link>
                                 </td>
 

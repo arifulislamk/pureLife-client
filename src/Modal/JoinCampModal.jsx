@@ -18,7 +18,7 @@ const JoinCampModal = ({ closeModal, isOpen, camps, refetch }) => {
     // console.log(camps, camps.participantCount)
 
     const handlebtn = async formData => {
-
+    
         try {
             const { data } = await axiosPublic.post('/participant', formData)
             console.log(data)

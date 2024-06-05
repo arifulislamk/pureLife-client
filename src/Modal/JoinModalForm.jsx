@@ -73,6 +73,22 @@ const JoinModalForm = ({ handleSubmit, handlebtn, register, camps }) => {
                             required
                         />
                     </div>
+                    <div className='space-y-1 text-sm'>
+                        <label htmlFor='organizerEmail' className='block text-gray-600'>
+                            Organizer Email
+                        </label>
+                        <input
+                            {...register('organizerEmail')}
+                            readOnly
+                            defaultValue={camps?.organizerEmail}
+                            className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                            name='organizerEmail'
+                            id='organizerEmail'
+                            type='text'
+                            placeholder='organizerEmail'
+                            required
+                        />
+                    </div>
 
                     <div className='flex justify-between gap-2'>
                         <div className='space-y-1 text-sm'>
