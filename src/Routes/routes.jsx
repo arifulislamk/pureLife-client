@@ -9,11 +9,15 @@ import CampDetails from "../pages/CampDetails/CampDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import ErrorPage from "../pages/ErrorPage.jsx/ErrorPage";
 import DashBoard from "../Layout/DashBoard";
-import OrganizerProfile from "../pages/DashBoard/OrganizerProfile/OrganizerProfile";
-import ManageCamps from "../pages/DashBoard/ManageCamps/ManageCamps";
-import ManageRegisteredCamps from "../pages/DashBoard/ManageRegisteredCamps/ManageRegisteredCamps";
-import AddCamp from "../pages/DashBoard/AddCamp/AddCamp";
-import UpdateCamps from "../pages/DashBoard/UpdateCamps";
+import ManageCamps from "../pages/DashBoard/Organizer/ManageCamps/ManageCamps";
+import ManageRegisteredCamps from "../pages/DashBoard/Organizer/ManageRegisteredCamps/ManageRegisteredCamps";
+import UpdateCamps from "../pages/DashBoard/Organizer/UpdateCamps/UpdateCamps";
+import OrganizerProfile from "../pages/DashBoard/Organizer/OrganizerProfile/OrganizerProfile";
+import AddCamp from "../pages/DashBoard/Organizer/AddCamp/AddCamp";
+import Analytics from "../pages/DashBoard/Participant/Analytics/Analytics";
+import ParticipantProfile from "../pages/DashBoard/Participant/ParticipantProfile/ParticipantProfile";
+import PaymentHistory from "../pages/DashBoard/Participant/PaymentHistory/PaymentHistory";
+import RegisteredCamps from "../pages/DashBoard/Participant/RegisteredCamps/RegisteredCamps";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +55,7 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <PrivateRoutes><DashBoard /></PrivateRoutes>,
         children: [
+            // organizer profile 
             {
                 path: "addCamp",
                 element: <PrivateRoutes><AddCamp /></PrivateRoutes>
@@ -71,6 +76,26 @@ const router = createBrowserRouter([
                 path: "update-camp/:campId",
                 element: <PrivateRoutes><UpdateCamps /></PrivateRoutes>
             },
+
+
+            // participant profile 
+            {
+                path: "analytics",
+                element: <PrivateRoutes><Analytics /></PrivateRoutes>
+            },
+            {
+                path: "participant-profile",
+                element: <PrivateRoutes><ParticipantProfile /></PrivateRoutes>
+            },
+            {
+                path: "payment-history",
+                element: <PrivateRoutes><PaymentHistory /></PrivateRoutes>
+            },
+            {
+                path: "registered-camps",
+                element: <PrivateRoutes><RegisteredCamps /></PrivateRoutes>
+            },
+
         ]
     },
 ]);

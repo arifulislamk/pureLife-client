@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const UpdateCamps = () => {
     const { register, handleSubmit } = useForm()

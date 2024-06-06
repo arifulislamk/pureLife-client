@@ -1,6 +1,6 @@
 
 import { Helmet } from 'react-helmet-async'
-import useAuth from '../../../hooks/useAuth'
+import useAuth from '../../../../hooks/useAuth'
 
 const OrganizerProfile = () => {
     const { user } = useAuth() || {}
