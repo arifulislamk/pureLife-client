@@ -19,6 +19,7 @@ import ParticipantProfile from "../pages/DashBoard/Participant/ParticipantProfil
 import PaymentHistory from "../pages/DashBoard/Participant/PaymentHistory/PaymentHistory";
 import RegisteredCamps from "../pages/DashBoard/Participant/RegisteredCamps/RegisteredCamps";
 import OrganizersRoutes from "./OrganizersRoutes";
+import OurDoctor from "../pages/OurDoctor/OurDoctor";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: '/join-us',
                 element: <JoinUs />
+            },
+            {
+                path: '/doctors',
+                element: <OurDoctor />
             },
             {
                 path: '/login',

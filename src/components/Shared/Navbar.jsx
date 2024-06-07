@@ -6,6 +6,7 @@ const Navbar = () => {
     const navItems = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/available-camps'>Available Camps</NavLink></li>
+        <li><NavLink to='/doctors'>Our Doctors</NavLink></li>
     </>
 
     const handleLogout = () => {
