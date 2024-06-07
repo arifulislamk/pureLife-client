@@ -17,8 +17,6 @@ const RegisteredCamps = () => {
     if (isLoading) return <p>loading </p>
     return (
         <div>
-            <h2>Registered Camps</h2>
-
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

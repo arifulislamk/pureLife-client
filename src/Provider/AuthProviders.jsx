@@ -43,9 +43,6 @@ const AuthProvider = ({ children }) => {
 
     const logOut = async () => {
         setLoading(true)
-        await axiosPublic.get('/logout', {
-            withCredentials: true,
-        })
         return signOut(auth)
     }
 
@@ -57,13 +54,17 @@ const AuthProvider = ({ children }) => {
     }
 
     // {create token }
-    const getToken = async email => {
-        const { data } = axiosPublic.post('/jwt', { email }, { withCredentials: true })
-        console.log(data, 'datat from auth')
-        return data
+    const getToken = async userInfo => {
+        await axiosPublic.post('/jwt', userInfo)
+            .then(res => {
+                if (res.data.token) {
+                    console.log(res.data)
+                    localStorage.setItem('access-token', res.data.token)
+                    setLoading(false)
+                }
+                return res.data
+            })
     }
-
-    // {save user }
     // onAuthStateChange
 
     useEffect(() => {
@@ -71,10 +72,14 @@ const AuthProvider = ({ children }) => {
             console.log(currentUser, 'user from AuthProvider')
             setUser(currentUser)
             if (currentUser) {
-                getToken(currentUser?.email)
-                // saveUser(currentUser)
+                // sign webtoken
+                const userInfo = { email: currentUser.email }
+                getToken(userInfo)
+            } else {
+                // TODO: remove webtoken 
+                localStorage.removeItem('access-token')
+                setLoading(false)
             }
-            setLoading(false)
         })
         return () => {
             return unsubscribe()
