@@ -25,6 +25,7 @@ const AddCamp = () => {
         window.scroll(0, 0)
     }, [])
     const [startDate, setStartDate] = useState(new Date());
+    const [loading, setLoading] = useState(false)
 
     const { mutateAsync } = useMutation({
         mutationKey: ['capms'],
@@ -34,23 +35,29 @@ const AddCamp = () => {
         },
         onSuccess: () => {
             toast.success('Camps Added Succecfull')
+            setLoading(false)
+            navigate('/dashboard/manage-camps')
+        },
+        onError: () => {
+            toast.error('SomeThings Problem!!!')
         }
     })
-    const handlebtn = async formData => {
-        const data = delete formData.pa
-        console.log(data)
 
+    const handlebtn = async formData => {
         try {
+            setLoading(true)
             // upload imagebb get url 
             const image_url = await imageUpload(image)
-            console.log(image_url)
-            const campsData = { ...formData,participantCount: parseInt(0), dateAndTime: startDate, image:image_url , organizerEmail: user?.email, }
+            console.log(image_url, 'url')
+            const campsData = { ...formData, participantCount: parseInt(0), dateAndTime: startDate, image: image_url, organizerEmail: user?.email, }
 
             // post a camps 
             mutateAsync(campsData)
-            navigate('/dashboard/manage-camps')
+            setLoading(false)
         } catch (err) {
             console.log(err)
+            toast.error('SomeThings Problem!!!')
+            setLoading(false)
         }
 
     }
@@ -59,7 +66,6 @@ const AddCamp = () => {
         setimageText(image.name)
         setimage(image)
     }
-
     return (
         <div>
             <AddForm
@@ -72,6 +78,7 @@ const AddCamp = () => {
                 imageText={imageText}
                 imagePreview={imagePreview}
                 setImagePreview={setImagePreview}
+                loading={loading}
             />
         </div>
     );

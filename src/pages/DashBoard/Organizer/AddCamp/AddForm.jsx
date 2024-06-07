@@ -10,7 +10,9 @@ const AddForm = ({
     setImagePreview,
     handleImage,
     imagePreview,
-    imageText, }) => {
+    imageText,
+    loading
+}) => {
     return (
         <div>
             <form onSubmit={handleSubmit(handlebtn)} className="font-open-sans card-body space-y-4 mb-6 border rounded-lg border-gray-400 md:w-5/6 mx-auto">
@@ -60,7 +62,7 @@ const AddForm = ({
                             readOnly
                             defaultValue={0}
                             id="number"
-                            type="number" 
+                            type="number"
                             name="participantCount" className="input input-bordered" required />
                     </div>
                 </div>
@@ -109,7 +111,7 @@ const AddForm = ({
                         cols={10} rows={5} name="description" placeholder="description" type="text" className=" outline-none border light:border-gray-500 rounded-lg"></textarea>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn bg-orange-400  ">Add Camps</button>
+                    <button disabled={loading} className="btn bg-orange-400  ">Add Camps</button>
                 </div>
             </form>
         </div>

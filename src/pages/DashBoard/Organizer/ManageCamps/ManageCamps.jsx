@@ -11,7 +11,7 @@ const ManageCamps = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
 
-    const { data: campsData = [], isLoading } = useQuery({
+    const { data: campsData = [], isLoading, refetch } = useQuery({
         queryKey: ['data', user?.email],
         queryFn: async () => {
             const { data } = await axiosSecure(`/camps/user/${user?.email}`)
@@ -28,6 +28,7 @@ const ManageCamps = () => {
         },
         onSuccess: () => {
             toast.success('Camps Delete succesful!')
+            refetch()
         }
 
     })
