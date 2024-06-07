@@ -10,7 +10,6 @@ import useAuth from "../../../../hooks/useAuth";
 const ManageCamps = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
-    // const axiosPublic = useAxiosPublic()
 
     const { data: campsData = [], isLoading } = useQuery({
         queryKey: ['data', user?.email],

@@ -9,7 +9,9 @@ const Home = () => {
             <Helmet>
                 <title>PureLife Health | Home</title>
             </Helmet>
-            <Carousel />
+            <div className=" mt-8 h-96">
+                <Carousel />
+            </div>
             <PopularMedicalCamp />
         </div>
     );

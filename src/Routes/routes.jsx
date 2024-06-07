@@ -78,7 +78,6 @@ const router = createBrowserRouter([
                 element: <OrganizersRoutes><PrivateRoutes><UpdateCamps /></PrivateRoutes></OrganizersRoutes>
             },
 
-
             // participant profile 
             {
                 path: "analytics",
