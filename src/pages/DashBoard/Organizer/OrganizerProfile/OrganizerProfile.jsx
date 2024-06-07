@@ -2,6 +2,7 @@
 import { Helmet } from 'react-helmet-async'
 import useAuth from '../../../../hooks/useAuth'
 import toast from 'react-hot-toast'
+import Swal from 'sweetalert2'
 
 const OrganizerProfile = () => {
     const { user, resetPassword, setLoading } = useAuth() || {}
@@ -10,7 +11,11 @@ const OrganizerProfile = () => {
         if (!user.email) return toast.error('please input email frist')
         try {
             await resetPassword(user.email)
-            toast.success('reset successful ! Please cheek your email further process....')
+            Swal.fire({
+                title: "reset successful ! Please cheek your email further process....!",
+                icon: "success"
+            });
+            toast.success(' Please cheek your email further process....')
             setLoading(false)
         } catch (err) {
             console.log(err)

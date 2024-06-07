@@ -20,7 +20,6 @@ const AddCamp = () => {
     // const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
 
-
     useEffect(() => {
         window.scroll(0, 0)
     }, [])

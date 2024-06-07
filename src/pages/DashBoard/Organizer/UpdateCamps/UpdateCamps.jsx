@@ -1,34 +1,56 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useAuth from "../../../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { imageUpload } from "../../../../utility";
 
 const UpdateCamps = () => {
     const { register, handleSubmit } = useForm()
+    const { user } = useAuth()
     const [imagePreview, setImagePreview] = useState();
     const [imageText, setimageText] = useState('');
     const [image, setimage] = useState();
-    const [startDate, setStartDate] = useState(new Date());
+    const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate()
 
     const axiosSecure = useAxiosSecure()
     const { campId } = useParams()
-    const { data: campData, isLoading } = useQuery({
+    const { data: campData, isLoading, refetch } = useQuery({
         queryKey: ['camp'],
         queryFn: async () => {
             const { data } = await axiosSecure(`/camps/${campId}`)
             return data
         }
     })
-    console.log(campData)
-
-
     //update form
+    const [startDate, setStartDate] = useState(new Date() || new Date(campData?.dateAndTime));
 
     const handlebtn = async data => {
-        console.log(data)
+
+        
+        try {
+            console.log(campData.image)
+            setLoading(true)
+            const image_url = await imageUpload(image) 
+            const updateData = { ...data, dateAndTime: startDate, organizerEmail: user?.email, image: image_url }
+            console.log(updateData)
+
+            await axiosSecure.patch(`/camps/update/${campId}`, updateData)
+            setLoading(false)
+            navigate('/dashboard/manage-camps')
+            refetch()
+        } catch (err) {
+            console.log(err)
+            toast.error('image or any input not available')
+            setLoading(false)
+            refetch()
+        }
     }
     const handleImage = image => {
         setImagePreview(URL.createObjectURL(image))
@@ -37,7 +59,7 @@ const UpdateCamps = () => {
     }
 
     if (isLoading) return <p>loading</p>
-    const { campFees, campName, dateAndTime, description, email, healthcareProfessional, location, participantCount } = campData;
+    const { campFees, campName, description, healthcareProfessional, location, participantCount } = campData;
     return (
         <div>
             <form onSubmit={handleSubmit(handlebtn)} className="font-open-sans card-body space-y-4 mb-6 border rounded-lg border-gray-400 md:w-5/6 mx-auto">
@@ -142,7 +164,7 @@ const UpdateCamps = () => {
                         cols={10} rows={5} name="description" placeholder="description" type="text" className=" outline-none border light:border-gray-500 rounded-lg"></textarea>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn bg-orange-400  ">Update Now</button>
+                    <button disabled={loading} className="btn bg-orange-400  ">Update Now</button>
                 </div>
             </form>
         </div>

@@ -32,13 +32,13 @@ const ManageRegisteredCamps = () => {
     const handelCencel = id => {
         console.log(id)
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: "Are you  cencel this participant?",
+            text: "You won't be able to revert this person!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Cencel from Camp!"
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const data = await mutateAsync(id)
