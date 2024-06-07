@@ -18,6 +18,7 @@ import Analytics from "../pages/DashBoard/Participant/Analytics/Analytics";
 import ParticipantProfile from "../pages/DashBoard/Participant/ParticipantProfile/ParticipantProfile";
 import PaymentHistory from "../pages/DashBoard/Participant/PaymentHistory/PaymentHistory";
 import RegisteredCamps from "../pages/DashBoard/Participant/RegisteredCamps/RegisteredCamps";
+import OrganizersRoutes from "./OrganizersRoutes";
 
 const router = createBrowserRouter([
     {
@@ -58,23 +59,23 @@ const router = createBrowserRouter([
             // organizer profile 
             {
                 path: "addCamp",
-                element: <PrivateRoutes><AddCamp /></PrivateRoutes>
+                element: <OrganizersRoutes><PrivateRoutes><AddCamp /></PrivateRoutes></OrganizersRoutes>
             },
             {
                 path: "organizer-profile",
-                element: <PrivateRoutes><OrganizerProfile /></PrivateRoutes>
+                element: <OrganizersRoutes><PrivateRoutes><OrganizerProfile /></PrivateRoutes></OrganizersRoutes>
             },
             {
                 path: "manage-camps",
-                element: <PrivateRoutes><ManageCamps /></PrivateRoutes>
+                element: <OrganizersRoutes><PrivateRoutes><ManageCamps /></PrivateRoutes></OrganizersRoutes>
             },
             {
                 path: "manage-registered-camps",
-                element: <PrivateRoutes><ManageRegisteredCamps /></PrivateRoutes>
+                element: <OrganizersRoutes><PrivateRoutes><ManageRegisteredCamps /></PrivateRoutes></OrganizersRoutes>
             },
             {
                 path: "update-camp/:campId",
-                element: <PrivateRoutes><UpdateCamps /></PrivateRoutes>
+                element: <OrganizersRoutes><PrivateRoutes><UpdateCamps /></PrivateRoutes></OrganizersRoutes>
             },
 
 

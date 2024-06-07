@@ -9,11 +9,13 @@ import { CgProfile } from "react-icons/cg";
 import { MdLocalHospital } from "react-icons/md";
 import { IoAnalytics } from "react-icons/io5";
 import { CiDollar } from "react-icons/ci";
+import useOrganizer from "../../hooks/useOrganizer";
 
 const Sidebar = () => {
     const { logOut } = useAuth()
     const [isActive, setActive] = useState(false)
 
+    const [role, isLoading] = useOrganizer()
     const handleToggle = () => {
         setActive(!isActive)
     }
@@ -69,16 +71,26 @@ const Sidebar = () => {
                     <div className='flex flex-col justify-between flex-1 mt-6'>
                         <nav>
                             {/* organizer menu  */}
-                            <MenuItem address='organizer-profile' label='Organizer Profile' icon={CgProfile} />
-                            <MenuItem address='addCamp' label='Add A Camp' icon={FaPlus} />
-                            <MenuItem address='manage-camps' label='Manage Camps' icon={MdLocalHospital} />
-                            <MenuItem address='manage-registered-camps' label='Manage Registered Camps' icon={FaHospitalUser} />
-                            
+
+                            {
+                                role === 'organizer' ?
+                                    <>
+                                        <MenuItem address='organizer-profile' label='Organizer Profile' icon={CgProfile} />
+                                        <MenuItem address='addCamp' label='Add A Camp' icon={FaPlus} />
+                                        <MenuItem address='manage-camps' label='Manage Camps' icon={MdLocalHospital} />
+                                        <MenuItem address='manage-registered-camps' label='Manage Registered Camps' icon={FaHospitalUser} />
+
+                                    </> :
+                                    <>
+                                        <MenuItem address='analytics' label='Analytics' icon={IoAnalytics} />
+                                        <MenuItem address='participant-profile' label='Participant Profile' icon={CgProfile} />
+                                        <MenuItem address='payment-history' label='Payment History' icon={CiDollar} />
+                                        <MenuItem address='registered-camps' label='Registered Camps' icon={FaHospitalUser} />
+                                    </>
+                            }
+
                             {/* participant menu  */}
-                            <MenuItem address='analytics' label='Analytics' icon={IoAnalytics} />
-                            <MenuItem address='participant-profile' label='Participant Profile' icon={CgProfile} />
-                            <MenuItem address='payment-history' label='Payment History' icon={CiDollar} />
-                            <MenuItem address='registered-camps' label='Registered Camps' icon={FaHospitalUser} />
+
                         </nav>
                     </div>
                 </div>
