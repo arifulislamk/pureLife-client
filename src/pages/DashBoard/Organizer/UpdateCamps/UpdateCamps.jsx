@@ -8,6 +8,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { imageUpload } from "../../../../utility";
+import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
 
 const UpdateCamps = () => {
     const { register, handleSubmit } = useForm()
@@ -33,11 +34,11 @@ const UpdateCamps = () => {
 
     const handlebtn = async data => {
 
-        
+
         try {
             console.log(campData.image)
             setLoading(true)
-            const image_url = await imageUpload(image) 
+            const image_url = await imageUpload(image)
             const updateData = { ...data, dateAndTime: startDate, organizerEmail: user?.email, image: image_url }
             console.log(updateData)
 
@@ -58,7 +59,7 @@ const UpdateCamps = () => {
         setimage(image)
     }
 
-    if (isLoading) return <p>loading</p>
+    if (isLoading) return <LoadingSpiner />
     const { campFees, campName, description, healthcareProfessional, location, participantCount } = campData;
     return (
         <div>

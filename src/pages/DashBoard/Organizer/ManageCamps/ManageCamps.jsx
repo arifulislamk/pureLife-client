@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
+import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
 
 const ManageCamps = () => {
     const { user } = useAuth()
@@ -58,7 +59,7 @@ const ManageCamps = () => {
         });
 
     }
-    if (isLoading) return <p>loaging</p>
+    if (isLoading) return <LoadingSpiner />
     return (
         <div>
             <div className="overflow-x-auto">

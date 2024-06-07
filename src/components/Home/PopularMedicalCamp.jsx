@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import LoadingSpiner from "../Shared/LoadingSpiner";
 
 const PopularMedicalCamp = () => {
 
@@ -14,7 +15,7 @@ const PopularMedicalCamp = () => {
     //         })
     // }, [])
 
-    const { data: camps = [] , isLoading } = useQuery({
+    const { data: camps = [], isLoading } = useQuery({
         queryKey: ['camps'],
         queryFn: async () => {
             const { data } = await axiosPublic('/campsSix')
@@ -22,7 +23,7 @@ const PopularMedicalCamp = () => {
         }
     })
 
-    if(isLoading || camps.length < 1 ) return <p>loading</p>
+    if (isLoading || camps.length < 1) return <LoadingSpiner />
     return (
         <div className=" mt-20">
             <h2 className=" text-5xl font-bold text-center mb-14">Popular Medical Camps</h2>

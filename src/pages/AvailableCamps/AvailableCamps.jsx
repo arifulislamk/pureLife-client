@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { BsLayoutThreeColumns } from "react-icons/bs";
 import { LuColumns } from "react-icons/lu";
+import LoadingSpiner from "../../components/Shared/LoadingSpiner";
 
 const AvailableCamps = () => {
     const [search, setSearch] = useState('')
@@ -28,10 +29,8 @@ const AvailableCamps = () => {
         console.log('search ok click', searchText)
         setSearch(searchText)
     }
-    const [layout, setlayout] = useState('');
-    console.log(layout)
 
-    if (isLoading || camps.length < 1) return <p> loading</p>
+    if (isLoading || camps.length < 1) return <LoadingSpiner />
     return (
         <div>
             <Helmet>

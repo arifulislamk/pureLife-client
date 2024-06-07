@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
+import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
 
 const RegisteredCamps = () => {
     const { user } = useAuth()
@@ -14,7 +15,7 @@ const RegisteredCamps = () => {
     })
 
     console.log(userData)
-    if (isLoading) return <p>loading </p>
+    if (isLoading) return <LoadingSpiner />
     return (
         <div>
             <div className="overflow-x-auto">

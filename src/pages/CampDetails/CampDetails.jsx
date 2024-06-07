@@ -4,6 +4,7 @@ import JoinCampModal from "../../Modal/JoinCampModal";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import LoadingSpiner from "../../components/Shared/LoadingSpiner";
 
 const CampDetails = () => {
     const { id } = useParams();
@@ -25,7 +26,7 @@ console.log(campName)
     const closeModal = () => {
         setIsOpen(false)
     }
-    if (isLoading || camps.length < 1) return <p> loading</p>
+    if (isLoading || camps.length < 1) return <LoadingSpiner />
     return (
         <div>
             <div className="font-algeria mx-4 lg:mx-12 ">

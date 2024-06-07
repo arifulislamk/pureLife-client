@@ -22,7 +22,6 @@ const OrganizerProfile = () => {
             toast.error(err.message)
             setLoading(false)
         }
-        console.log(user.email)
     }
     return (
         <div className='flex justify-center items-center h-screen'>

@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { imageUpload } from '../../../../utility';
 import useAuth from '../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import LoadingSpiner from '../../../../components/Shared/LoadingSpiner';
 
 const AddCamp = () => {
     const { register, handleSubmit } = useForm()
@@ -17,7 +18,6 @@ const AddCamp = () => {
     const { user } = useAuth()
 
     const axiosSecure = useAxiosSecure();
-    // const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -65,6 +65,7 @@ const AddCamp = () => {
         setimageText(image.name)
         setimage(image)
     }
+    if (loading) return <LoadingSpiner />
     return (
         <div>
             <AddForm
