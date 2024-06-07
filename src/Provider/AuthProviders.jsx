@@ -65,8 +65,19 @@ const AuthProvider = ({ children }) => {
                 return res.data
             })
     }
-    // onAuthStateChange
+    // save new user in database 
+    const saveUser = async user => {
+        console.log(user);
+        const currentUser = {
+            email: user?.email,
+            role: 'participant',
+        }
+        const { data } = await axiosPublic.post(`/users`,
+            currentUser)
+        return data
+    }
 
+    // onAuthStateChange
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser, 'user from AuthProvider')
@@ -75,6 +86,7 @@ const AuthProvider = ({ children }) => {
                 // sign webtoken
                 const userInfo = { email: currentUser.email }
                 getToken(userInfo)
+                saveUser(currentUser)
             } else {
                 // TODO: remove webtoken 
                 localStorage.removeItem('access-token')

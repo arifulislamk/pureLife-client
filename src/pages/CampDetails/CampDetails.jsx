@@ -3,17 +3,16 @@ import { useParams } from "react-router-dom";
 import JoinCampModal from "../../Modal/JoinCampModal";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const CampDetails = () => {
-    // const camps = useLoaderData();
     const { id } = useParams();
-    // console.log(id)
-    const axiosPublic = useAxiosPublic()
+    // const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { data: camps = [], isLoading, refetch } = useQuery({
         queryKey: ['camps'],
         queryFn: async () => {
-            const { data } = await axiosPublic.get(`/camps/${id}`)
+            const { data } = await axiosSecure.get(`/camps/${id}`)
             return data
         }
     })
