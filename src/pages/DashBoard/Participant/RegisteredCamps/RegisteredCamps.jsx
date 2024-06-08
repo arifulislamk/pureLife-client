@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
+import Paymodal from "../../../../Modal/Paymodal";
+import { useState } from "react";
 
 const RegisteredCamps = () => {
     const { user } = useAuth()
@@ -13,8 +15,17 @@ const RegisteredCamps = () => {
             return data
         }
     })
-
     console.log(userData)
+
+    const [isOpen, setIsOpen] = useState(false)
+    const closeModal = () => {
+        setIsOpen(false)
+    }
+
+    const [id, setId] = useState()
+    console.log(id)
+    const findCampbyid = userData?.find(camp => camp._id === id)
+    console.log(findCampbyid, ' are id diye khuje vai')
     if (isLoading) return <LoadingSpiner />
     return (
         <div>
@@ -40,7 +51,15 @@ const RegisteredCamps = () => {
                                 <td>{camp.campFees}</td>
                                 <td>{camp.organizerEmail}</td>
                                 <td>{camp.participantName}</td>
-                                <td>{camp?.status ? camp?.status : 'pay'}</td>
+                                <td>
+                                    <button onClick={() => {
+                                        setIsOpen(true)
+                                        setId(camp._id)
+                                    }
+                                    } className=" btn">
+                                        {camp?.status ? camp?.status : 'pay'}
+                                    </button>
+                                </td>
                                 <td>{camp?.status ? camp?.status : 'pending'}</td>
                                 <td><button className="btn">X</button></td>
                                 <td>[feedback]</td>
@@ -49,6 +68,10 @@ const RegisteredCamps = () => {
 
                     </tbody>
                 </table>
+                <Paymodal
+                    closeModal={closeModal}
+                    isOpen={isOpen}
+                    camp={findCampbyid} />
             </div>
         </div>
     );
