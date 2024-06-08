@@ -8,7 +8,7 @@ import { useState } from "react";
 const RegisteredCamps = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
-    const { data: userData, isLoading } = useQuery({
+    const { data: userData, isLoading, refetch } = useQuery({
         queryKey: ['participant'],
         queryFn: async () => {
             const { data } = await axiosSecure(`/participant/user/${user?.email}`)
@@ -52,17 +52,26 @@ const RegisteredCamps = () => {
                                 <td>{camp.organizerEmail}</td>
                                 <td>{camp.participantName}</td>
                                 <td>
-                                    <button onClick={() => {
-                                        setIsOpen(true)
-                                        setId(camp._id)
-                                    }
-                                    } className=" btn">
+                                    <button
+                                        disabled={camp?.status}
+                                        onClick={() => {
+                                            setIsOpen(true)
+                                            setId(camp._id)
+                                        }}
+                                        className={"btn" + (camp?.status ? " btn-success" : " btn-success text-white")} >
                                         {camp?.status ? camp?.status : 'pay'}
                                     </button>
                                 </td>
-                                <td>{camp?.status ? camp?.status : 'pending'}</td>
+                                <td>{camp?.confirmation ? camp?.confirmation : 'pending'}</td>
                                 <td><button className="btn">X</button></td>
-                                <td>[feedback]</td>
+                                <td>
+                                    <button
+                                        disabled={!camp?.confirmation}
+                                        className=" btn"
+                                    >
+                                        {camp?.confirmation ? '[feedback]' : 'N/A'}
+                                    </button>
+                                </td>
                             </tr>)
                         }
 
@@ -71,6 +80,7 @@ const RegisteredCamps = () => {
                 <Paymodal
                     closeModal={closeModal}
                     isOpen={isOpen}
+                    refetch={refetch}
                     camp={findCampbyid} />
             </div>
         </div>

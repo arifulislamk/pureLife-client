@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
+import { useState } from "react";
 
 const ManageRegisteredCamps = () => {
     const { user } = useAuth()
@@ -53,6 +54,24 @@ const ManageRegisteredCamps = () => {
             }
         });
     }
+
+    const [id, setId] = useState()
+    console.log(id)
+    const findCampbyid = userCamps?.find(camp => camp._id === id)
+    console.log(findCampbyid, ' are id diye khuje vai1')
+    const handleConfirmation = async () => {
+        console.log('okkkkk confirmation')
+        try {
+            await axiosSecure.patch(`/participant/confirm/${findCampbyid?._id}`, {
+                confirmation: 'Confirmed',
+            })
+            toast.success('Confirmed Success ')
+            refetch()
+            // navigate('/dashboard/my-bookings')
+        } catch (err) {
+            console.log(err)
+        }
+    }
     if (isLoading) return <LoadingSpiner />
     return (
         <div>
@@ -75,8 +94,22 @@ const ManageRegisteredCamps = () => {
                                 <td>{camp.participantName}</td>
                                 <td>{camp.campName}</td>
                                 <td>{camp.campFees}</td>
-                                <td>done</td>
-                                <td>done</td>
+                                <td>
+                                    <button
+                                        className={" px-3 py-2 rounded-lg w-20 font-medium" + (camp?.status ? " bg-success" : " bg-error text-white")} >
+                                        {camp?.status ? camp?.status : 'Unpaid'}
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        onClick={() => {
+                                            handleConfirmation()
+                                            setId(camp._id)
+                                        }}
+                                        className=" btn">
+                                        {camp?.confirmation ? camp?.confirmation : 'Pending'}
+                                    </button>
+                                </td>
                                 <td>
                                     <button onClick={() => handelCencel(camp._id)} className="btn hover:btn-ghost"><MdDelete className=" text-red-600 text-xl" /></button>
                                 </td>

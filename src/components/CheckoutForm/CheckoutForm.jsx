@@ -83,7 +83,20 @@ const CheckoutForm = ({ closeModal, camp, refetch }) => {
             return
         }
         if (paymentIntent.status === 'succeeded') {
+            // 1. Create payment info object 
             console.log(paymentIntent)
+            try {
+                await axiosSecure.patch(`/participant/status/${camp?._id}`, {
+                    status: 'Paid' ,
+                })
+
+                refetch()
+                toast.success('Payment Success ')
+                closeModal()
+                // navigate('/dashboard/my-bookings')
+            } catch (err) {
+                console.log(err)
+            }
         }
 
         setProcessing(false)
@@ -141,7 +154,6 @@ const CheckoutForm = ({ closeModal, camp, refetch }) => {
 };
 
 CheckoutForm.propTypes = {
-    bookingInfo: PropTypes.object,
     closeModal: PropTypes.func,
     refetch: PropTypes.func,
 
