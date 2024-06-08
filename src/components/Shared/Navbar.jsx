@@ -41,7 +41,9 @@ const Navbar = () => {
                 {
                     user ? <>
                         <div className="z-50 dropdown dropdown-bottom dropdown-end">
-                            <div tabIndex={0} role="button" className=" m-1"><img className=" w-10 rounded-full" referrerPolicy="no-referrer" src={user?.photoURL} alt="" /></div>
+                            <div tabIndex={0} role="button" className=" flex justify-center items-center  mr-3 gap-3 m-1"><img className=" w-12 h-12 rounded-full" referrerPolicy="no-referrer" src={user?.photoURL} alt="" />
+                                <Link onClick={handleLogout}><button className=" btn">LogOut</button></Link>
+                            </div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><Link >{user?.displayName ? user?.displayName : 'No Name Available'}</Link></li>
                                 <li><Link to='/dashboard'>DashBoard</Link></li>

@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home";
 import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
-import JoinUs from "../pages/JoinUs/JoinUs";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
 import CampDetails from "../pages/CampDetails/CampDetails";
@@ -38,10 +37,6 @@ const router = createBrowserRouter([
             {
                 path: '/camps/:id',
                 element: <PrivateRoutes><CampDetails /></PrivateRoutes>,
-            },
-            {
-                path: '/join-us',
-                element: <JoinUs />
             },
             {
                 path: '/doctors',

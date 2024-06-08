@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import toast from 'react-hot-toast'
-import { TbFidgetSpinner } from "react-icons/tb";
+import { TbSquareRotated } from "react-icons/tb";
 import useAuth from '../../hooks/useAuth';
 import { imageUpload } from '../../utility';
 import Swal from 'sweetalert2';
@@ -128,9 +128,9 @@ const Signup = () => {
                         <button
                             disabled={loading}
                             type='submit'
-                            className='bg-rose-500 w-full rounded-md py-3 text-white'
+                            className='bg-blue-500 w-full rounded-md py-3 text-white'
                         >
-                            {loading ? <TbFidgetSpinner className=' animate-spin m-auto'></TbFidgetSpinner> : 'Continue'}
+                            {loading ? <TbSquareRotated className=' animate-spin m-auto'></TbSquareRotated> : 'Continue'}
                         </button>
                     </div>
                 </form>

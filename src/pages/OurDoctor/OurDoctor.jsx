@@ -1,5 +1,4 @@
 
-import { useLoaderData } from 'react-router-dom';
 import Doctors from '../../components/Doctors/Doctors';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../hooks/useAxiosPublic';

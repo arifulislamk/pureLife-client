@@ -25,6 +25,7 @@ const RegisteredCamps = () => {
                         <tr>
                             <th>Camp name</th>
                             <th>Camps Fees</th>
+                            <th>Organizer Email</th>
                             <th>Participant Name</th>
                             <th>Payment Status</th>
                             <th>Confirmation Status</th>
@@ -34,11 +35,15 @@ const RegisteredCamps = () => {
                     </thead>
                     <tbody>
                         {
-                            userData.map(camp => <tr key={camp._id}>
+                            userData?.map(camp => <tr key={camp._id}>
                                 <th>{camp.campName}</th>
                                 <td>{camp.campFees}</td>
+                                <td>{camp.organizerEmail}</td>
                                 <td>{camp.participantName}</td>
-                                <td>Blue</td>
+                                <td>{camp?.status ? camp?.status : 'pay'}</td>
+                                <td>{camp?.status ? camp?.status : 'pending'}</td>
+                                <td><button className="btn">X</button></td>
+                                <td>[feedback]</td>
                             </tr>)
                         }
 
