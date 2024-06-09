@@ -15,7 +15,7 @@ const Feedback = () => {
 
     if (isLoading) return <LoadingSpiner />
     return (
-        <div className="text-center font-algeria rounded-lg mb-5 lg:mb-10 mt-5">
+        <div className="text-center font-algeria rounded-lg mb-5 lg:mb-10 mt-40">
             <h2 className="mb-5 lg:mb-20 text-center font-roboto font-extrabold text-2xl lg:text-5xl"> Feedback and Ratings </h2>
 
             <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-5">

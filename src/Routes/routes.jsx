@@ -19,6 +19,7 @@ import PaymentHistory from "../pages/DashBoard/Participant/PaymentHistory/Paymen
 import RegisteredCamps from "../pages/DashBoard/Participant/RegisteredCamps/RegisteredCamps";
 import OrganizersRoutes from "./OrganizersRoutes";
 import OurDoctor from "../pages/OurDoctor/OurDoctor";
+import ContactUs from "../pages/ContactUs/ContactUs";
 import Postfeddback from "../pages/DashBoard/Participant/Postfeedback/Postfeddback";
 import Participantroutes from "./Participantroutes";
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: '/doctors',
                 element: <OurDoctor />
+            },
+            {
+                path: '/contact-us',
+                element: <ContactUs />
             },
             {
                 path: '/login',

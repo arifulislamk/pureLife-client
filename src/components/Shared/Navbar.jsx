@@ -7,6 +7,7 @@ const Navbar = () => {
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/available-camps'>Available Camps</NavLink></li>
         <li><NavLink to='/doctors'>Our Doctors</NavLink></li>
+        <li><NavLink to='/contact-us'>Contact Us</NavLink></li>
     </>
 
     const handleLogout = () => {

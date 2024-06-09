@@ -25,7 +25,7 @@ const PopularMedicalCamp = () => {
 
     if (isLoading || camps.length < 1) return <LoadingSpiner />
     return (
-        <div className=" mt-20">
+        <div className=" mt-32">
             <h2 className=" text-5xl font-bold text-center mb-14">Popular Medical Camps</h2>
             <div className=" grid grid-cols-2 gap-5">
                 {
