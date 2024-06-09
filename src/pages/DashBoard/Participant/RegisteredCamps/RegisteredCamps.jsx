@@ -68,7 +68,7 @@ const RegisteredCamps = () => {
                                 <td>{camp?.confirmation ? camp?.confirmation : 'pending'}</td>
                                 <td><button className="btn">X</button></td>
                                 <td>
-                                    <Link to='/dashbord/feedback'>
+                                    <Link to='/dashboard/post-feedback'>
                                         <button
                                             disabled={!camp?.confirmation}
                                             className=" btn"

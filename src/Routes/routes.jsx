@@ -19,6 +19,7 @@ import PaymentHistory from "../pages/DashBoard/Participant/PaymentHistory/Paymen
 import RegisteredCamps from "../pages/DashBoard/Participant/RegisteredCamps/RegisteredCamps";
 import OrganizersRoutes from "./OrganizersRoutes";
 import OurDoctor from "../pages/OurDoctor/OurDoctor";
+import Postfeddback from "../pages/DashBoard/Participant/Postfeedback/Postfeddback";
 
 const router = createBrowserRouter([
     {
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
             {
                 path: "registered-camps",
                 element: <PrivateRoutes><RegisteredCamps /></PrivateRoutes>
+            },
+            {
+                path: "post-feedback",
+                element: <PrivateRoutes><Postfeddback /></PrivateRoutes>
             },
 
         ]
