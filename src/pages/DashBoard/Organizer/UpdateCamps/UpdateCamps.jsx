@@ -7,15 +7,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import toast from "react-hot-toast";
-import { imageUpload } from "../../../../utility";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
 
 const UpdateCamps = () => {
     const { register, handleSubmit } = useForm()
     const { user } = useAuth()
-    const [imagePreview, setImagePreview] = useState();
-    const [imageText, setimageText] = useState('');
-    const [image, setimage] = useState();
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate()
@@ -34,17 +30,15 @@ const UpdateCamps = () => {
 
     const handlebtn = async data => {
 
-
         try {
-            console.log(campData.image)
             setLoading(true)
-            const image_url = await imageUpload(image)
-            const updateData = { ...data, dateAndTime: startDate, organizerEmail: user?.email, image: image_url }
+            const updateData = { ...data, dateAndTime: startDate, organizerEmail: user?.email }
             console.log(updateData)
 
             await axiosSecure.patch(`/camps/update/${campId}`, updateData)
             setLoading(false)
             navigate('/dashboard/manage-camps')
+            toast.success('Camps Updates Done!')
             refetch()
         } catch (err) {
             console.log(err)
@@ -52,11 +46,6 @@ const UpdateCamps = () => {
             setLoading(false)
             refetch()
         }
-    }
-    const handleImage = image => {
-        setImagePreview(URL.createObjectURL(image))
-        setimageText(image.name)
-        setimage(image)
     }
 
     if (isLoading) return <LoadingSpiner />
@@ -120,33 +109,7 @@ const UpdateCamps = () => {
                     </div>
                 </div>
                 <div className=" flex flex-col md:flex-row gap-3 ">
-                    <div className=' p-4 bg-white w-full rounded-lg flex justify-around items-center'>
-                        <div className='file_upload px-3 py-2 relative border-2 border-double border-gray-300 rounded-lg'>
-                            <div className='flex flex-col w-max mx-auto text-center'>
-                                <label>
-                                    <input
-                                        name="photo"
-                                        className='text-sm cursor-pointer w-36 hidden'
-                                        type='file'
-                                        onChange={e => {
-                                            handleImage(e.target.files[0])
-                                        }}
-                                        id='image'
-                                        accept='image/*'
-                                        hidden
-                                    />
-                                    <div className='bg-green-800 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-yellow-500'>
-                                        <p>Upload Image</p>
-                                        {imageText.length > 20 ? imageText.split('.')[0].slice(0, 15) + ' ...' + imageText.split('.')[1] : imageText}
-
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div className=" h-16 w-16 object-cover overflow-hidden flex items-center">{imagePreview && <img src={imagePreview} />}</div>
-
-                    </div>
+                    
                     <div className="form-control md:w-1/2">
                         <label className="label">
                             <span className="label-text text-xl font-medium">Date and Time :</span>

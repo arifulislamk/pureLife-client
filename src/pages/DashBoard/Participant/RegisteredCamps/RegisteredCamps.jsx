@@ -4,9 +4,11 @@ import useAuth from "../../../../hooks/useAuth";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
 import Paymodal from "../../../../Modal/Paymodal";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const RegisteredCamps = () => {
     const { user } = useAuth()
+    const [id, setId] = useState()
     const axiosSecure = useAxiosSecure()
     const { data: userData, isLoading, refetch } = useQuery({
         queryKey: ['participant'],
@@ -22,10 +24,11 @@ const RegisteredCamps = () => {
         setIsOpen(false)
     }
 
-    const [id, setId] = useState()
+
     console.log(id)
     const findCampbyid = userData?.find(camp => camp._id === id)
     console.log(findCampbyid, ' are id diye khuje vai')
+
     if (isLoading) return <LoadingSpiner />
     return (
         <div>
@@ -65,12 +68,14 @@ const RegisteredCamps = () => {
                                 <td>{camp?.confirmation ? camp?.confirmation : 'pending'}</td>
                                 <td><button className="btn">X</button></td>
                                 <td>
-                                    <button
-                                        disabled={!camp?.confirmation}
-                                        className=" btn"
-                                    >
-                                        {camp?.confirmation ? '[feedback]' : 'N/A'}
-                                    </button>
+                                    <Link to='/dashbord/feedback'>
+                                        <button
+                                            disabled={!camp?.confirmation}
+                                            className=" btn"
+                                        >
+                                            {camp?.confirmation ? '[feedback]' : 'N/A'}
+                                        </button>
+                                    </Link>
                                 </td>
                             </tr>)
                         }
