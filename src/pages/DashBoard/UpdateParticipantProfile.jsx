@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const UpdateProfile = () => {
+const UpdateParticipantProfile = () => {
     const { user } = useAuth()
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
-
+    
     const { mutateAsync } = useMutation({
         mutationKey: ['user'],
         mutationFn: async (newUser) => {
@@ -27,7 +27,7 @@ const UpdateProfile = () => {
             const newUser = { name, phoneNumber, email }
             const data = await mutateAsync(newUser)
             console.log(data)
-            navigate('/dashboard/organizer-profile')
+            navigate('/dashboard/participant-profile')
         } catch (err) {
             console.log(err)
         }
@@ -83,4 +83,4 @@ const UpdateProfile = () => {
     );
 };
 
-export default UpdateProfile;
+export default UpdateParticipantProfile;

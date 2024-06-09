@@ -23,6 +23,7 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import Postfeddback from "../pages/DashBoard/Participant/Postfeedback/Postfeddback";
 import Participantroutes from "./Participantroutes";
 import UpdateProfile from "../pages/DashBoard/UpdateProfile";
+import UpdateParticipantProfile from "../pages/DashBoard/UpdateParticipantProfile";
 
 const router = createBrowserRouter([
     {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
             {
                 path: "update-profile",
                 element: <UpdateProfile />
+            },
+            {
+                path: "update-participant-profile",
+                element: <UpdateParticipantProfile />
             },
             // organizer profile 
             {

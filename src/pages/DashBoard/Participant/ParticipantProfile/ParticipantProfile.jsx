@@ -1,28 +1,22 @@
 import { Helmet } from 'react-helmet-async'
-import toast from 'react-hot-toast'
-import Swal from 'sweetalert2'
 import useAuth from '../../../../hooks/useAuth'
 import { Link } from 'react-router-dom'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
+import { useQuery } from '@tanstack/react-query'
+import LoadingSpiner from '../../../../components/Shared/LoadingSpiner'
 
 const ParticipantProfile = () => {
-    const { user, resetPassword, setLoading } = useAuth() || {}
-    // handle reset password 
-    const handleReset = async () => {
-        if (!user.email) return toast.error('please input email frist')
-        try {
-            await resetPassword(user.email)
-            Swal.fire({
-                title: "reset successful ! Please cheek your email further process....!",
-                icon: "success"
-            });
-            toast.success(' Please cheek your email further process....')
-            setLoading(false)
-        } catch (err) {
-            console.log(err)
-            toast.error(err.message)
-            setLoading(false)
+    const { user } = useAuth() || {}
+    const axiosSecure = useAxiosSecure()
+    const { data: users, isLoading } = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const { data } = await axiosSecure(`/user/${user?.email}`)
+            return data
         }
-    }
+    })
+    console.log(users)
+    if (isLoading) return <LoadingSpiner />
     return (
         <>
             <Helmet>
@@ -31,11 +25,10 @@ const ParticipantProfile = () => {
             <div className=" mt-2 text-center text-3xl  text-blue-800">
                 <h2> <span>Hi, {user.displayName}</span> . Welcome back Dashboard </h2>
             </div>
-            <div className='flex justify-center items-center h-screen'>
-                <div className=' text-white bg-blue-300 shadow-lg rounded-2xl w-3/5'>
+            <div className='flex justify-center items-center'>
+                <div className=' px-20 text-white bg-blue-300 shadow-lg rounded-2xl '>
                     <div
-
-                        className='w-full bg-blue-300 mb-4 rounded-t-lg h-36'
+                        className='  bg-blue-300 mb-4 rounded-t-lg h-36'
                     />
                     <div className=' -mt-16'>
                         <div className=' flex flex-col items-center  p-4 justify-center'>
@@ -56,29 +49,30 @@ const ParticipantProfile = () => {
                         </div>
 
                         <div className='w-full p-2 mt-4 rounded-lg'>
-                            <div className='flex flex-wrap items-center justify-between  text-gray-600 text-xl '>
+                            <div className='flex gap-14 flex-wrap items-center justify-between  text-gray-600 text-xl '>
                                 <p className='flex flex-col'>
                                     Name
                                     <span className='font-bold  '>
-                                        {user?.displayName}
+                                        {users?.name ? users?.name : user?.displayName}
                                     </span>
                                 </p>
                                 <p className='flex flex-col'>
                                     Email
-                                    <span className='font-bold  '>{user?.email}</span>
+                                    <span className='font-bold  '>{users?.email ? users?.email : user?.email}</span>
                                 </p>
+                                <p className='flex flex-col'>
+                                    Phone
+                                    <span className='font-bold  '>{users?.phoneNumber}</span>
+                                </p>
+                            </div>
 
-                                <div>
-                                    <Link to='/dashboard/update-profile'>
-                                        <button className='bg-green-800 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1'>
+                            <div>
+                                    <Link to='/dashboard/update-participant-profile'>
+                                        <button className='bg-green-500 mt-10 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1'>
                                             Update Profile
                                         </button>
                                     </Link>
-                                    <button onClick={handleReset} className='bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]'>
-                                        Change Password
-                                    </button>
                                 </div>
-                            </div>
                         </div>
                     </div>
                     <div className='w-full mb-4 bg-blue-300 rounded-t-lg h-36'

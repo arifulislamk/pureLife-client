@@ -1,40 +1,33 @@
-
 import { Helmet } from 'react-helmet-async'
 import useAuth from '../../../../hooks/useAuth'
-import toast from 'react-hot-toast'
-import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import useAxiosSecure from '../../../../hooks/useAxiosSecure'
+import LoadingSpiner from '../../../../components/Shared/LoadingSpiner'
 
 const OrganizerProfile = () => {
-    const { user, resetPassword, setLoading } = useAuth() || {}
-    // handle reset password 
-    const handleReset = async () => {
-        if (!user.email) return toast.error('please input email frist')
-        try {
-            await resetPassword(user.email)
-            Swal.fire({
-                title: "reset successful ! Please cheek your email further process....!",
-                icon: "success"
-            });
-            toast.success(' Please cheek your email further process....')
-            setLoading(false)
-        } catch (err) {
-            console.log(err)
-            toast.error(err.message)
-            setLoading(false)
+    const { user } = useAuth() || {}
+    const axiosSecure = useAxiosSecure()
+    const { data: users, isLoading } = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const { data } = await axiosSecure(`/user/${user?.email}`)
+            return data
         }
-    }
+    })
+    console.log(users)
+    if (isLoading) return <LoadingSpiner />
     return (
         <>
             <Helmet>
                 <title>PureLife Health | Profile</title>
             </Helmet>
             <div className=" mt-2 text-center text-3xl  text-blue-800">
-                <h2> <span>Hi, {user.displayName}</span> . Welcome back Dashboard </h2>
+                <h2> <span>Hi, {users?.name}</span> . Welcome back Dashboard </h2>
             </div>
             <div className='flex justify-center items-center h-screen'>
 
-                <div className=' text-white bg-blue-300 shadow-lg rounded-2xl w-3/5'>
+                <div className=' px-20 text-white bg-blue-300 shadow-lg rounded-2xl'>
                     <div
 
                         className='w-full bg-blue-300 mb-4 rounded-t-lg h-28'
@@ -58,28 +51,31 @@ const OrganizerProfile = () => {
                         </div>
 
                         <div className='w-full p-2 mt-4 rounded-lg'>
-                            <div className='flex flex-wrap items-center justify-between  text-gray-600 text-xl '>
+                            <div className='flex gap-14 flex-wrap items-center justify-between  text-gray-600 text-xl '>
                                 <p className='flex flex-col'>
                                     Name
                                     <span className='font-bold  '>
-                                        {user?.displayName}
+                                        {users?.name ? users?.name : user?.displayName}
                                     </span>
                                 </p>
                                 <p className='flex flex-col'>
                                     Email
-                                    <span className='font-bold  '>{user?.email}</span>
-                                </p>
+                                    <span className='font-bold  '>
+                                        {users?.email ? users?.email : user?.email}
 
-                                <div>
-                                    <Link to='/dashboard/update-profile'>
-                                        <button className='bg-green-800 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1'>
-                                            Update Profile
-                                        </button>
-                                    </Link>
-                                    <button onClick={handleReset} className='bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]'>
-                                        Change Password
+                                    </span>
+                                </p>
+                                <p className='flex flex-col'>
+                                    Phone
+                                    <span className='font-bold  '>{users.phoneNumber}</span>
+                                </p>
+                            </div>
+                            <div>
+                                <Link to='/dashboard/update-profile'>
+                                    <button className='bg-green-500 mt-10 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1'>
+                                        Update Profile
                                     </button>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>

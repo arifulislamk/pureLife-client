@@ -20,7 +20,8 @@ const CampDetails = () => {
 
     // console.log(camps);
     const { campName, image, campFees, dateAndTime, location, healthcareProfessional, participantCount, description } = camps;
-console.log(campName)
+    console.log(campName)
+    
     const [isOpen, setIsOpen] = useState(false)
 
     const closeModal = () => {

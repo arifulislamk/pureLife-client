@@ -1,21 +1,43 @@
-# Live link :
+# Assignment Type : (Medical Camp)
+- Mi-12 Assignment Requirement assignment12_category_0017
 
-### Packages and api docs used in this project:
+# WebSite Name, Live Link , Organizer user and password
+* PureLife Health
+* OrganizerEmail: ariful18374@gmail.com
+* Password : khan12
+* Link : https://purelife-health.web.app/
 
 
-- [IMGBB Api](https://api.imgbb.com/)
-- [@tanstack/react-query](https://www.npmjs.com/package/@tanstack/react-query)
-- [axios](https://www.npmjs.com/package/axios)
-- [date-fns](https://www.npmjs.com/package/date-fns)
-- [query-string](https://www.npmjs.com/package/query-string)
-- [react-date-range](https://www.npmjs.com/package/react-date-range)
-- [react-helmet-async](https://www.npmjs.com/package/react-helmet-async)
-- [react-hot-toast](https://www.npmjs.com/package/react-hot-toast)
-- [react-icons](https://www.npmjs.com/package/react-icons)
-- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
-- [react-spinners](https://www.npmjs.com/package/react-spinners)
-- [@stripe/react-stripe-js](https://www.npmjs.com/package/@stripe/react-stripe-js)
-- [@stripe/stripe-js](https://www.npmjs.com/package/@stripe/stripe-js)
-- [firebase](https://www.npmjs.com/package/firebase)
-- [react-google-charts](https://www.npmjs.com/package/react-google-charts)
 
+# Features or Section Describe of my website 
+
+- Home Page : My full website overview  . There are some section slider/banner , Popular Medical Camps,Our Popular Doctors ,contactUs.
+
+- Available Camps Page : This section  have all the available Camps data from all Camps collection. if any user click than he got join modal button , if he click and he can join Camps.
+
+- Dashboard(Organizer, Participants) : There are two types of role in this website . 
+
+- Organizer(AddCamps, manageCamps, MangageReisteredCamps, Profile) (Restricted role) :  4 page in this role . he can access many things for this website .
+- AddCamps : Organizer can added new camps for available page . that seen every user.
+- Manage Camps : He can Update already added camps.
+- Manage Registered Camps : He can confirm join camps for any participant user. or delete any join requested user.
+- Profile : Details for self. and update self information.
+
+- Participant(Analytics, PaymentHistory, RegistredCamps, profile) : Every new user are automatics get this role. 
+- Analytics : He see how much cost he done. or fees.
+- Payment History: All payment done by user with tabel formate.
+- Registred Camps : Joining Requested camps table formate .
+- Profile : self , here he also update self information.
+
+#  npm package name
+- react-hook-from(useForm) 
+- Tanstack Queary(useQuery, useMutation)
+- Axios 
+- react-awesome-reveal
+- React SweetAleart-2 
+- react-hot-toast
+- PropTypes 
+- Daisy UI
+- Firebase
+- react-icons
+- react-helmet-async

@@ -17,7 +17,7 @@ const Footer = () => {
                 <nav>
                     <h6 className="footer-title">Company</h6>
                     <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
+                    <Link to="/contact-us" className="link link-hover">Contact</Link>
                 </nav>
             </footer>
             <div className="footer flex justify-between  p-4 bg-base-200 ">
