@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Postfeddback = () => {
     const { register, handleSubmit } = useForm()
@@ -32,6 +33,9 @@ const Postfeddback = () => {
     }
     return (
         <div className="flex  flex-col  p-8  shadow-sm rounded-xl lg:p-12 dark:bg-gray-50 dark:text-gray-800">
+            <Helmet>
+                <title>PureLife Health | FeedBack</title>
+            </Helmet>
             <form onSubmit={handleSubmit(handlefeedback)} className="flex flex-col items-center w-full">
                 <h2 className="text-5xl font-semibold text-center"> Give Your opinion!</h2>
                 <div className="flex flex-col items-center py-6 space-y-3">

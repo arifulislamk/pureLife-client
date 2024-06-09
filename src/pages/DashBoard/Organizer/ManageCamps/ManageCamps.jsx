@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
+import { Helmet } from "react-helmet-async";
 
 const ManageCamps = () => {
     const { user } = useAuth()
@@ -62,6 +63,9 @@ const ManageCamps = () => {
     if (isLoading) return <LoadingSpiner />
     return (
         <div>
+            <Helmet>
+                <title>PureLife Health | ManageCamps</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}

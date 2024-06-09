@@ -1,7 +1,11 @@
+import { Helmet } from "react-helmet-async";
 
 const ContactUs = () => {
     return (
         <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
+            <Helmet>
+                <title>PureLife Health | Contact</title>
+            </Helmet>
             <h2 className=" text-5xl font-extrabold mb-14 text-center ">Contact Us</h2>
             <div className="grid  grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                 <div className="py-6 md:py-0 md:px-6">

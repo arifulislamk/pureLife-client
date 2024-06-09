@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useOrganizer from "../../hooks/useOrganizer";
 
 const Navbar = () => {
     const { user, logOut } = useAuth()
+    const [role] = useOrganizer()
     const navItems = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/available-camps'>Available Camps</NavLink></li>
@@ -47,8 +49,10 @@ const Navbar = () => {
                             </div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><Link >{user?.displayName ? user?.displayName : 'No Name Available'}</Link></li>
-                                <li><Link to='/dashboard'>DashBoard</Link></li>
-
+                                {
+                                    role === 'organizer' ? <li><Link to='/dashboard/organizer-profile'>DashBoard</Link></li> :
+                                        <li><Link to='/dashboard/participant-profile'>DashBoard</Link></li>
+                                }
                                 <p className=" mt-6 ml-6 text-red-700 font-medium"><Link onClick={handleLogout}>LogOut</Link></p>
                             </ul>
                         </div>

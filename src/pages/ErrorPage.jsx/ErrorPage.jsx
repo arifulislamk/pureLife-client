@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
     return (
         <div className="flex mt-10 justify-center">
+            <Helmet>
+                <title>Error</title>
+            </Helmet>
             <div>
                 <h1 className="text-center text-5xl mt-20">ooooooooops !!!!!!!!!!</h1> <br />
                 <h2 className=" text-5xl text-red-600 font-bold">Your path is wrong!</h2>

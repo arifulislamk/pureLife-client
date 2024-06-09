@@ -6,6 +6,7 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ManageRegisteredCamps = () => {
     const { user } = useAuth()
@@ -75,6 +76,9 @@ const ManageRegisteredCamps = () => {
     if (isLoading) return <LoadingSpiner />
     return (
         <div>
+            <Helmet>
+                <title>PureLife Health | Regeistred Camps</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

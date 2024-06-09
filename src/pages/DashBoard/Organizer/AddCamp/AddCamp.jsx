@@ -9,6 +9,7 @@ import { imageUpload } from '../../../../utility';
 import useAuth from '../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import LoadingSpiner from '../../../../components/Shared/LoadingSpiner';
+import { Helmet } from 'react-helmet-async';
 
 const AddCamp = () => {
     const { register, handleSubmit } = useForm()
@@ -68,6 +69,9 @@ const AddCamp = () => {
     if (loading) return <LoadingSpiner />
     return (
         <div>
+            <Helmet>
+                <title>PureLife Health | AddCamp</title>
+            </Helmet>
             <AddForm
                 startDate={startDate}
                 setStartDate={setStartDate}

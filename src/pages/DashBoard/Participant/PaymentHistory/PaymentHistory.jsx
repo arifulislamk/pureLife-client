@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
+import { Helmet } from "react-helmet-async";
 
 const PaymentHistory = () => {
     const { user } = useAuth()
@@ -14,9 +15,12 @@ const PaymentHistory = () => {
         }
     })
     console.log(userpayment)
-    if(isLoading) return <LoadingSpiner />
+    if (isLoading) return <LoadingSpiner />
     return (
         <div>
+            <Helmet>
+                <title>PureLife Health | Payment History</title>
+            </Helmet>
             <h1 className=" text-center text-4xl font-semibold mb-10">Payment History</h1>
             <div className="overflow-x-auto">
                 <table className="table">

@@ -3,6 +3,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer, 
 import useAuth from '../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import LoadingSpiner from '../../../../components/Shared/LoadingSpiner';
+import { Helmet } from 'react-helmet-async';
 
 
 const Analytics = () => {
@@ -33,6 +34,9 @@ const Analytics = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>PureLife Health | Analytics </title>
+            </Helmet>
             <h2 className=' text-center text-xl'>My Already Join Camps and Camps Fes </h2>
             <div style={{ width: '100%', height: 300 }}>
                 <ResponsiveContainer width="100%" height="100%">

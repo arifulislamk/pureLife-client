@@ -5,6 +5,7 @@ import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
 import Paymodal from "../../../../Modal/Paymodal";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const RegisteredCamps = () => {
     const { user } = useAuth()
@@ -32,6 +33,9 @@ const RegisteredCamps = () => {
     if (isLoading) return <LoadingSpiner />
     return (
         <div>
+            <Helmet>
+                <title>PureLife Health | Registred Camps</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
