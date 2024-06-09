@@ -20,6 +20,7 @@ import RegisteredCamps from "../pages/DashBoard/Participant/RegisteredCamps/Regi
 import OrganizersRoutes from "./OrganizersRoutes";
 import OurDoctor from "../pages/OurDoctor/OurDoctor";
 import Postfeddback from "../pages/DashBoard/Participant/Postfeedback/Postfeddback";
+import Participantroutes from "./Participantroutes";
 
 const router = createBrowserRouter([
     {
@@ -82,23 +83,23 @@ const router = createBrowserRouter([
             // participant profile 
             {
                 path: "analytics",
-                element: <PrivateRoutes><Analytics /></PrivateRoutes>
+                element: <Participantroutes><PrivateRoutes><Analytics /></PrivateRoutes></Participantroutes>
             },
             {
                 path: "participant-profile",
-                element: <PrivateRoutes><ParticipantProfile /></PrivateRoutes>
+                element: <Participantroutes><PrivateRoutes><ParticipantProfile /></PrivateRoutes></Participantroutes>
             },
             {
                 path: "payment-history",
-                element: <PrivateRoutes><PaymentHistory /></PrivateRoutes>
+                element: <Participantroutes><PrivateRoutes><PaymentHistory /></PrivateRoutes></Participantroutes>
             },
             {
                 path: "registered-camps",
-                element: <PrivateRoutes><RegisteredCamps /></PrivateRoutes>
+                element: <Participantroutes><PrivateRoutes><RegisteredCamps /></PrivateRoutes></Participantroutes>
             },
             {
                 path: "post-feedback",
-                element: <PrivateRoutes><Postfeddback /></PrivateRoutes>
+                element: <Participantroutes><PrivateRoutes><Postfeddback /></PrivateRoutes></Participantroutes>
             },
 
         ]
