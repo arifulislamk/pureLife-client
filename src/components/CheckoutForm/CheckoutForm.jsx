@@ -6,9 +6,11 @@ import { ImSpinner9 } from 'react-icons/im'
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast'
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const CheckoutForm = ({ closeModal, camp, refetch }) => {
-
+    const { user } = useAuth()
     const navigate = useNavigate()
     const [clientSecret, setClientSecret] = useState();
     const [processing, setProcessing] = useState(false);
@@ -85,14 +87,35 @@ const CheckoutForm = ({ closeModal, camp, refetch }) => {
         if (paymentIntent.status === 'succeeded') {
             // 1. Create payment info object 
             console.log(paymentIntent)
+            const paymentInfo = {
+                ...camp,
+                userEmail: user?.email,
+                campId: camp._id,
+                transactionId: paymentIntent.id,
+                date: new Date(),
+            }
+            delete paymentInfo._id
+            console.log(paymentInfo)
+
             try {
+                // post payment information 
+                const { data } = await axiosSecure.post(`/paymentInfo`, paymentInfo)
+                console.log(data)
+
+                // update participant status
                 await axiosSecure.patch(`/participant/status/${camp?._id}`, {
-                    status: 'Paid' ,
+                    status: 'Paid',
                 })
 
                 refetch()
-                toast.success('Payment Success ')
                 closeModal()
+                toast.success('Payment Success ')
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `Your Payment Successfully Done! Your TransactionId is ${paymentIntent.id}.`,
+                    showConfirmButton: false,
+                });
                 // navigate('/dashboard/my-bookings')
             } catch (err) {
                 console.log(err)
