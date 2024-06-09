@@ -92,9 +92,10 @@ const ManageCamps = () => {
                                 })}</td>
                                 <td>{camp.location}</td>
                                 <td>{camp.healthcareProfessional}</td>
-                                <td> <Link to={`/dashboard/update-camp/${camp._id}`}>
-                                    <button className="btn  hover:btn-info"><FaRegEdit className="text-2xl" /></button>
-                                </Link>
+                                <td>
+                                    <Link to={`/dashboard/update-camp/${camp._id}`}>
+                                        <button onClick={refetch()} className="btn  hover:btn-info"><FaRegEdit className="text-2xl" /></button>
+                                    </Link>
                                 </td>
 
                                 <td>

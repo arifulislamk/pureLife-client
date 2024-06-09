@@ -22,6 +22,7 @@ import OurDoctor from "../pages/OurDoctor/OurDoctor";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Postfeddback from "../pages/DashBoard/Participant/Postfeedback/Postfeddback";
 import Participantroutes from "./Participantroutes";
+import UpdateProfile from "../pages/DashBoard/UpdateProfile";
 
 const router = createBrowserRouter([
     {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <PrivateRoutes><DashBoard /></PrivateRoutes>,
         children: [
+            {
+                path: "update-profile",
+                element: <UpdateProfile />
+            },
             // organizer profile 
             {
                 path: "addCamp",

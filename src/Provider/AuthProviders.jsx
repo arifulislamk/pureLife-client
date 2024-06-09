@@ -45,11 +45,21 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signOut(auth)
     }
-
+    // for create new user 
     const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo,
+        })
+    }
+
+    // for update page
+    const profileUpdate = (name, phoneNumber, email) => {
+        console.log(phoneNumber, 'phone from auth')
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            phoneNumber: phoneNumber,
+            email: email,
         })
     }
 
@@ -110,6 +120,7 @@ const AuthProvider = ({ children }) => {
         resetPassword,
         logOut,
         updateUserProfile,
+        profileUpdate,
     }
 
     return (

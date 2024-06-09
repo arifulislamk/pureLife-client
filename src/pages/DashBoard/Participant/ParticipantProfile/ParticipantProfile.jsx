@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import toast from 'react-hot-toast'
 import Swal from 'sweetalert2'
 import useAuth from '../../../../hooks/useAuth'
+import { Link } from 'react-router-dom'
 
 const ParticipantProfile = () => {
     const { user, resetPassword, setLoading } = useAuth() || {}
@@ -68,9 +69,11 @@ const ParticipantProfile = () => {
                                 </p>
 
                                 <div>
-                                    <button className='bg-green-800 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1'>
-                                        Update Profile
-                                    </button>
+                                    <Link to='/dashboard/update-profile'>
+                                        <button className='bg-green-800 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1'>
+                                            Update Profile
+                                        </button>
+                                    </Link>
                                     <button onClick={handleReset} className='bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]'>
                                         Change Password
                                     </button>

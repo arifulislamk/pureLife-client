@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { MdDelete } from "react-icons/md";
+import {  MdDone } from "react-icons/md";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
@@ -83,7 +83,7 @@ const ManageRegisteredCamps = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className=" text-xl font-bold bg-gray-200 ">
                             <th>Participant Name</th>
                             <th>Camp Name</th>
                             <th>Camp Fees</th>
@@ -115,7 +115,17 @@ const ManageRegisteredCamps = () => {
                                     </button>
                                 </td>
                                 <td>
-                                    <button onClick={() => handelCencel(camp._id)} className="btn hover:btn-ghost"><MdDelete className=" text-red-600 text-xl" /></button>
+                                    {
+                                        camp?.confirmation ? <button
+                                            disabled={camp?.confirmation}
+                                            onClick={() => handelCencel(camp._id)} className="">
+                                            <MdDone className=" text-green-600 text-4xl" />
+                                        </button> : <button
+                                            disabled={camp?.confirmation}
+                                            onClick={() => handelCencel(camp._id)} className="btn text-red-950">
+                                           X
+                                        </button>
+                                    }
                                 </td>
                             </tr>)
                         }
