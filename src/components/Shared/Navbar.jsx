@@ -17,7 +17,7 @@ const Navbar = () => {
             return data
         }
     })
-    console.log(users)
+    // console.log(users)
     if (isLoading) return <LoadingSpiner />
     const navItems = <>
         <li><NavLink to='/'>Home</NavLink></li>

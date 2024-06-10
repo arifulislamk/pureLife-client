@@ -20,7 +20,6 @@ const RegisteredCamps = () => {
             return data
         }
     })
-    console.log(userData)
 
     const [isOpen, setIsOpen] = useState(false)
     const closeModal = () => {
@@ -28,9 +27,8 @@ const RegisteredCamps = () => {
     }
 
 
-    console.log(id)
     const findCampbyid = userData?.find(camp => camp._id === id)
-    console.log(findCampbyid, ' are id diye khuje vai')
+    // console.log(findCampbyid, ' are id diye khuje vai')
 
 
     const { mutateAsync } = useMutation({
@@ -46,7 +44,6 @@ const RegisteredCamps = () => {
 
     })
     const handelCencel = id => {
-        console.log(id)
         Swal.fire({
             title: "Are You Sure Cencel this Camp Join?",
             text: "You won't be able to revert this person!",

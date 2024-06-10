@@ -30,10 +30,9 @@ const UpdateParticipantProfile = () => {
         try {
             const newUser = { name, phoneNumber, email }
             const data = await mutateAsync(newUser)
-            console.log(data)
             navigate('/dashboard/participant-profile')
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
     return (

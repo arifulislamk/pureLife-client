@@ -22,7 +22,6 @@ const ManageRegisteredCamps = () => {
         }
     })
 
-    console.log(userCamps)
     const { mutateAsync } = useMutation({
         mutationKey: ['camps'],
         mutationFn: async (id) => {
@@ -36,7 +35,6 @@ const ManageRegisteredCamps = () => {
 
     })
     const handelCencel = id => {
-        console.log(id)
         Swal.fire({
             title: "Are you  cencel this participant?",
             text: "You won't be able to revert this person!",
@@ -61,12 +59,10 @@ const ManageRegisteredCamps = () => {
 
     const [id, setId] = useState()
     if (isLoading || userCamps?.length < 1) return <LoadingSpiner />
-    console.log(id)
     const findCampbyid =  userCamps?.length > 0 && userCamps?.find(camp => camp._id === id)
-    console.log(findCampbyid, ' are id diye khuje vai1')
-    
+    // console.log(findCampbyid, ' are id diye khuje vai1')
+
     const handleConfirmation = async () => {
-        console.log('okkkkk confirmation')
         try {
             await axiosSecure.patch(`/participant/confirm/${findCampbyid?._id}`, {
                 confirmation: 'Confirmed',
@@ -75,7 +71,7 @@ const ManageRegisteredCamps = () => {
             refetch()
             // navigate('/dashboard/my-bookings')
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
     if (isLoading || userCamps?.length < 1) return <LoadingSpiner />

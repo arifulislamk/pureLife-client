@@ -28,7 +28,7 @@ const AvailableCamps = () => {
     // console.log(camps, isLoading)
     const handleSearchbtn = e => {
         e.preventDefault();
-        console.log('search ok click', searchText)
+        // console.log('search ok click', searchText)
         setSearch(searchText)
     }
 

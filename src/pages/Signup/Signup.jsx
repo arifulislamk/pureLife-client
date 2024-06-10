@@ -18,23 +18,19 @@ const Signup = () => {
         const password = form.password.value;
         const image = form.image.files[0];
 
-        console.log(name, email, password, image)
-
         try {
             setLoading(true)
             // upload imgbb and get url 
             const image_url = await imageUpload(image)
-            console.log(image_url)
             // user Registration 
             const result = await createUser(email, password)
-            console.log(result)
 
             // update name and photo 
             await updateUserProfile(name, image_url)
             navigate('/')
             toast.success('signup succesful done')
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.error(err.message)
             setLoading(false)
         }
@@ -50,7 +46,7 @@ const Signup = () => {
                 icon: "success"
             });
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.error(err.message)
         }
     }

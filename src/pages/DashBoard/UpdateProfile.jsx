@@ -30,7 +30,7 @@ const UpdateProfile = () => {
         try {
             const newUser = { name, phoneNumber, email }
             const data = await mutateAsync(newUser)
-            console.log(data)
+            // console.log(data)
             navigate('/dashboard/organizer-profile')
         } catch (err) {
             console.log(err)

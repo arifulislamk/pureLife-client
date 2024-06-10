@@ -15,7 +15,6 @@ const ParticipantProfile = () => {
             return data
         }
     })
-    console.log(users)
     if (isLoading) return <LoadingSpiner />
     return (
         <>

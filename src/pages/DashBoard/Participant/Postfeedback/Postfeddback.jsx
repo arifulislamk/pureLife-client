@@ -12,7 +12,6 @@ const Postfeddback = () => {
     const navigate = useNavigate()
 
     const handlefeedback = async formData => {
-        console.log('post a feedback', formData.feed)
         const feedbackPost = {
             comment: formData?.feed,
             user: user?.email,
@@ -24,11 +23,10 @@ const Postfeddback = () => {
         try {
             // post feedback 
             const { data } = await axiosSecure.post('/feedback', feedbackPost)
-            console.log(data)
             toast.success('Thank you for Your Feedback')
             navigate('/')
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
     return (

@@ -20,7 +20,6 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
 
         try {
             setLoading(true)
@@ -32,7 +31,7 @@ const Login = () => {
                 icon: "success"
             });
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.error(err.message)
             setLoading(false)
         }
@@ -46,11 +45,10 @@ const Login = () => {
             toast.success('reset successful ! please cheek your email further process....')
             setLoading(false)
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.error(err.message)
             setLoading(false)
         }
-        console.log(email)
     }
 
     // google sign in 
@@ -63,7 +61,6 @@ const Login = () => {
                 icon: "success"
             });
         } catch (err) {
-            console.log(err)
             toast.error(err.message)
         }
     }

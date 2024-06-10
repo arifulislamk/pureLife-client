@@ -11,7 +11,7 @@ const Feedback = () => {
             return data
         }
     })
-    console.log(feedbackData)
+    // console.log(feedbackData)
 
     if (isLoading) return <LoadingSpiner />
     return (

@@ -36,15 +36,14 @@ const UpdateCamps = () => {
         try {
             setLoading(true)
             const updateData = { ...data, dateAndTime: startDate, organizerEmail: user?.email }
-            console.log(updateData)
-
+          
             await axiosSecure.patch(`/camps/update/${campId}`, updateData)
             setLoading(false)
             navigate('/dashboard/manage-camps')
             toast.success('Camps Updates Done!')
             refetch()
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.error('image or any input not available')
             setLoading(false)
             refetch()

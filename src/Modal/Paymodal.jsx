@@ -14,7 +14,7 @@ import CheckoutForm from '../components/CheckoutForm/CheckoutForm';
 const stripePromise = loadStripe(import.meta.env.VITE_Stripe_publishable_key);
 
 const Paymodal = ({ closeModal, isOpen, camp, refetch }) => {
-    console.log(camp)
+    // console.log(camp)
     return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog as='div' className='relative z-10' onClose={closeModal}>

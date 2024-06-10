@@ -14,7 +14,6 @@ const PaymentHistory = () => {
             return data
         }
     })
-    console.log(userpayment)
     if (isLoading) return <LoadingSpiner />
     return (
         <div>

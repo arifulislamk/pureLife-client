@@ -20,7 +20,7 @@ const JoinCampModal = ({ closeModal, isOpen, camps, refetch }) => {
     const handlebtn = async formData => {
         try {
             const { data } = await axiosPublic.post('/participant', formData)
-            console.log(data)
+            // console.log(data)
 
             // await axiosPublic.patch('/updateParticipants', camps)
             await axiosPublic.patch(`/camps/participants/${camps?._id}`, camps)
@@ -28,7 +28,7 @@ const JoinCampModal = ({ closeModal, isOpen, camps, refetch }) => {
             refetch()
             closeModal()
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.error('Three is issue!')
         }
 

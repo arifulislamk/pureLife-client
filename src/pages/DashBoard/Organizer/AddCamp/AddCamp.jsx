@@ -48,14 +48,14 @@ const AddCamp = () => {
             setLoading(true)
             // upload imagebb get url 
             const image_url = await imageUpload(image)
-            console.log(image_url, 'url')
+            // console.log(image_url, 'url')
             const campsData = { ...formData, participantCount: parseInt(0), dateAndTime: startDate, image: image_url, organizerEmail: user?.email, }
 
             // post a camps 
             mutateAsync(campsData)
             setLoading(false)
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.error('SomeThings Problem!!!')
             setLoading(false)
         }

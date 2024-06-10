@@ -55,7 +55,6 @@ const AuthProvider = ({ children }) => {
 
     // for update page
     const profileUpdate = (name, phoneNumber, email) => {
-        console.log(phoneNumber, 'phone from auth')
         return updateProfile(auth.currentUser, {
             displayName: name,
             phoneNumber: phoneNumber,
@@ -68,7 +67,7 @@ const AuthProvider = ({ children }) => {
         await axiosPublic.post('/jwt', userInfo)
             .then(res => {
                 if (res.data.token) {
-                    console.log(res.data)
+                    // console.log(res.data)
                     localStorage.setItem('access-token', res.data.token)
                     setLoading(false)
                 }
@@ -77,7 +76,7 @@ const AuthProvider = ({ children }) => {
     }
     // save new user in database 
     const saveUser = async user => {
-        console.log(user);
+        // console.log(user);
         const currentUser = {
             email: user?.email,
             name: user?.displayName,
@@ -92,7 +91,7 @@ const AuthProvider = ({ children }) => {
     // onAuthStateChange
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser, 'user from AuthProvider')
+            // console.log(currentUser, 'user from AuthProvider')
             setUser(currentUser)
             if (currentUser) {
                 // sign webtoken

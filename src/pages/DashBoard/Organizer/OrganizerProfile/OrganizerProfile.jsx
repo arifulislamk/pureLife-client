@@ -19,7 +19,6 @@ const OrganizerProfile = () => {
             return data
         }
     })
-    console.log(users)
     if (isLoading) return <LoadingSpiner />
     return (
         <>

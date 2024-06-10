@@ -24,7 +24,7 @@ const ManageCamps = () => {
             return data
         }
     })
-    console.log(campsData)
+    // console.log(campsData)
 
     const { mutateAsync } = useMutation({
         mutationKey: ['camps'],
@@ -40,7 +40,7 @@ const ManageCamps = () => {
     })
 
     const handelDelete = (id) => {
-        console.log(id)
+        // console.log(id)
         // delete camps 
         Swal.fire({
             title: "Are you sure?",

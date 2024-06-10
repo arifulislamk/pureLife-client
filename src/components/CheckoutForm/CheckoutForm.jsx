@@ -25,7 +25,7 @@ const CheckoutForm = ({ closeModal, camp, refetch }) => {
 
     const getClientSecret = async campFees => {
         const { data } = await axiosSecure.post('/create-payment-intent', campFees)
-        console.log('payment secret from server', data)
+        // console.log('payment secret from server', data)
         setClientSecret(data.clientSecret)
     }
     const stripe = useStripe();
@@ -58,12 +58,12 @@ const CheckoutForm = ({ closeModal, camp, refetch }) => {
         });
 
         if (error) {
-            console.log('[error]', error);
+            // console.log('[error]', error);
             setCardError(error.message)
             setProcessing(false)
             return
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            // console.log('[PaymentMethod]', paymentMethod);
             setCardError('')
         }
 
@@ -79,14 +79,14 @@ const CheckoutForm = ({ closeModal, camp, refetch }) => {
         })
 
         if (confirmError) {
-            console.log(confirmError)
+            // console.log(confirmError)
             setCardError(confirmError.message)
             setProcessing(false)
             return
         }
         if (paymentIntent.status === 'succeeded') {
             // 1. Create payment info object 
-            console.log(paymentIntent)
+            // console.log(paymentIntent)
             const paymentInfo = {
                 ...camp,
                 userEmail: user?.email,
@@ -95,12 +95,12 @@ const CheckoutForm = ({ closeModal, camp, refetch }) => {
                 date: new Date(),
             }
             delete paymentInfo._id
-            console.log(paymentInfo)
+            // console.log(paymentInfo)
 
             try {
                 // post payment information 
                 const { data } = await axiosSecure.post(`/paymentInfo`, paymentInfo)
-                console.log(data)
+                // console.log(data)
 
                 // update participant status
                 await axiosSecure.patch(`/participant/status/${camp?._id}`, {
@@ -118,7 +118,7 @@ const CheckoutForm = ({ closeModal, camp, refetch }) => {
                 });
                 // navigate('/dashboard/my-bookings')
             } catch (err) {
-                console.log(err)
+                // console.log(err)
             }
         }
 
