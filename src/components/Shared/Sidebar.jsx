@@ -15,7 +15,7 @@ const Sidebar = () => {
     const { logOut } = useAuth()
     const [isActive, setActive] = useState(false)
 
-    const [role, isLoading] = useOrganizer()
+    const [role] = useOrganizer()
     const handleToggle = () => {
         setActive(!isActive)
     }

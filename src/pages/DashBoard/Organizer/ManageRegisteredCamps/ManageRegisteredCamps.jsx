@@ -64,6 +64,7 @@ const ManageRegisteredCamps = () => {
     console.log(id)
     const findCampbyid =  userCamps?.length > 0 && userCamps?.find(camp => camp._id === id)
     console.log(findCampbyid, ' are id diye khuje vai1')
+    
     const handleConfirmation = async () => {
         console.log('okkkkk confirmation')
         try {
@@ -115,6 +116,7 @@ const ManageRegisteredCamps = () => {
                                             setId(camp._id)
                                         }}
                                         className=" btn">
+
                                         {camp?.confirmation ? camp?.confirmation : 'Pending'}
                                     </button>
                                 </td>

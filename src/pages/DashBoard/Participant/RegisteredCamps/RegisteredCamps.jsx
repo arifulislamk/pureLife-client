@@ -112,7 +112,7 @@ const RegisteredCamps = () => {
                                     <button onClick={() => handelCencel(camp._id)} className="btn">X</button>
                                 </td>
                                 <td>
-                                    <Link to={`${camp?.confirmation ? '/dashboard/post-feedback' : '/dashboard/registered-camps' }`}>
+                                    <Link to={`${camp?.confirmation ? '/dashboard/post-feedback' : '/dashboard/registered-camps'}`}>
                                         <button
                                             disabled={!camp?.confirmation}
                                             className=" btn"
