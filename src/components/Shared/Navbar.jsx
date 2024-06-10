@@ -1,10 +1,24 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useOrganizer from "../../hooks/useOrganizer";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import LoadingSpiner from "./LoadingSpiner";
 
 const Navbar = () => {
     const { user, logOut } = useAuth()
     const [role] = useOrganizer()
+
+    const axiosSecure = useAxiosSecure()
+    const { data: users, isLoading } = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const { data } = await axiosSecure(`/user/${user?.email}`)
+            return data
+        }
+    })
+    console.log(users)
+    if (isLoading) return <LoadingSpiner />
     const navItems = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/available-camps'>Available Camps</NavLink></li>
@@ -43,7 +57,7 @@ const Navbar = () => {
                 {
                     user ? <>
                         <div className="z-50 dropdown dropdown-bottom dropdown-end">
-                            <div tabIndex={0} role="button" className=" flex justify-center items-center  mr-3 gap-3 m-1"><img className=" w-12 h-12 rounded-full" referrerPolicy="no-referrer" src={user?.photoURL} alt="" />
+                            <div tabIndex={0} role="button" className=" flex justify-center items-center  mr-3 gap-3 m-1"><img className=" w-12 h-12 rounded-full" referrerPolicy="no-referrer" src={users?.photo || user?.photoURL} alt="" />
                                 <Link onClick={handleLogout}><button className=" btn">LogOut</button></Link>
                             </div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">

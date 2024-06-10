@@ -44,16 +44,16 @@ const CampDetails = () => {
                     <img className="w-full lg:h-[550px] rounded-lg" src={image} alt="" />
                 </div>
 
-                <div className=" mt-14 flex gap-7">
-                    <div className=" w-1/2">
+                <div className=" mt-8 md:mt-14 flex flex-col-reverse md:flex-row gap-3 md:gap-7">
+                    <div className=" md:w-1/2">
                         <p className=" text-xl"> <span className=" font-medium mr-6">Details :</span> {description}</p>
                     </div>
-                    <div className=" w-1/2 text-3xl space-y-3">
-                        <h2 className="lg:mb-6  text-2xl font-roboto lg:text-3xl font-bold">{healthcareProfessional} </h2>
-                        <p> <span className="text-3xl font-medium mr-6">Location :</span> {location}</p>
-                        <p> <span className="text-3xl font-medium mr-6">Date :</span> {dateAndTime}</p>
-                        <p> <span className="text-3xl font-medium mr-6">Fees :</span> {campFees}</p>
-                        <p> <span className="text-3xl font-medium mr-6"> Participant : </span> {participantCount}</p>
+                    <div className=" md:w-1/2 md:text-3xl space-y-3">
+                        <h2 className="lg:mb-6  md:text-2xl font-roboto lg:text-3xl font-bold">{healthcareProfessional} </h2>
+                        <p> <span className="md:text-3xl font-medium mr-6">Location :</span> {location}</p>
+                        <p> <span className="md:text-3xl font-medium mr-6">Date :</span> {dateAndTime}</p>
+                        <p> <span className="md:text-3xl font-medium mr-6">Fees :</span> {campFees}</p>
+                        <p> <span className="md:text-3xl font-medium mr-6"> Participant : </span> {participantCount}</p>
 
                         <button onClick={() => setIsOpen(true)} className="bg-[#FF8F40] w-full rounded-md py-3 text-white btn">Join Now Camp
                         </button>

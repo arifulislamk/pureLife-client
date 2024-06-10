@@ -81,6 +81,7 @@ const AuthProvider = ({ children }) => {
         const currentUser = {
             email: user?.email,
             role: 'participant',
+            photo: user?.photoURL,
         }
         const { data } = await axiosPublic.post(`/users`,
             currentUser)

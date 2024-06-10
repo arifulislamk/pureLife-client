@@ -39,11 +39,10 @@ const OrganizerProfile = () => {
                             <a href='#' className='relative block'>
                                 <img
                                     alt='profile'
-                                    src={user?.photoURL}
+                                    src={users?.photo || user?.photoURL}
                                     className='mx-auto object-cover rounded-full md:h-40 md:w-50  border-2 border-white '
                                 />
                             </a>
-
                             <p className='p-2 uppercase px-4 text-xs text-white bg-pink-500 rounded-full'>
                                 {'Organizer'}
                             </p>
