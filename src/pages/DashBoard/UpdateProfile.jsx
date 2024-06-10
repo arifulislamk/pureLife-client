@@ -3,8 +3,12 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useEffect } from "react";
 
 const UpdateProfile = () => {
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const { user } = useAuth()
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()

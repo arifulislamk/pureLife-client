@@ -1,17 +1,20 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import {  MdDone } from "react-icons/md";
+import { MdDone } from "react-icons/md";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const ManageRegisteredCamps = () => {
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
-    const { data: userCamps, isLoading, refetch } = useQuery({
+    const { data: userCamps = [], isLoading, refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
             const { data } = await axiosSecure(`/participant/${user?.email}`)
@@ -57,8 +60,9 @@ const ManageRegisteredCamps = () => {
     }
 
     const [id, setId] = useState()
+    if (isLoading || userCamps?.length < 1) return <LoadingSpiner />
     console.log(id)
-    const findCampbyid = userCamps?.find(camp => camp._id === id)
+    const findCampbyid =  userCamps?.length > 0 && userCamps?.find(camp => camp._id === id)
     console.log(findCampbyid, ' are id diye khuje vai1')
     const handleConfirmation = async () => {
         console.log('okkkkk confirmation')
@@ -73,7 +77,7 @@ const ManageRegisteredCamps = () => {
             console.log(err)
         }
     }
-    if (isLoading) return <LoadingSpiner />
+    if (isLoading || userCamps?.length < 1) return <LoadingSpiner />
     return (
         <div>
             <Helmet>
@@ -94,7 +98,7 @@ const ManageRegisteredCamps = () => {
                     </thead>
                     <tbody>
                         {
-                            userCamps.map((camp, index) => <tr key={index}>
+                            userCamps?.length > 0 && userCamps?.map((camp, index) => <tr key={index}>
                                 <td>{camp.participantName}</td>
                                 <td>{camp.campName}</td>
                                 <td>{camp.campFees}</td>
@@ -123,7 +127,7 @@ const ManageRegisteredCamps = () => {
                                         </button> : <button
                                             disabled={camp?.confirmation}
                                             onClick={() => handelCencel(camp._id)} className="btn text-red-950">
-                                           X
+                                            X
                                         </button>
                                     }
                                 </td>

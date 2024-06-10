@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
@@ -10,6 +10,9 @@ import toast from "react-hot-toast";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
 
 const UpdateCamps = () => {
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const { register, handleSubmit } = useForm()
     const { user } = useAuth()
     const [loading, setLoading] = useState(false);

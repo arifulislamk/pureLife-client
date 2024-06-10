@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsLayoutThreeColumns } from "react-icons/bs";
 import { LuColumns } from "react-icons/lu";
 import LoadingSpiner from "../../components/Shared/LoadingSpiner";
@@ -15,7 +15,9 @@ const AvailableCamps = () => {
     const axiosPublic = useAxiosPublic();
     const [toggle, setToggle] = useState(true)
 
-
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const { data: camps = [], isLoading } = useQuery({
         queryKey: ['camps', date, search, participant],
         queryFn: async () => {
@@ -36,7 +38,7 @@ const AvailableCamps = () => {
             <Helmet>
                 <title>PureLife Health | Available Camps</title>
             </Helmet>
-            <h2 className=" text-5xl font-bold text-center mb-14">Available Camps</h2>
+            <h2 className=" text-2xl md:text-3xl lg:text-5xl font-bold text-center mt-5 mb-5 lg:mb-14">Available Camps</h2>
 
             <div className=" flex flex-col md:flex-row md:justify-center items-center md:mb-10 gap-5 lg:gap-14">
                 <div>
@@ -103,7 +105,7 @@ const AvailableCamps = () => {
                 </div>
             </div>
 
-            <div className={"grid mt-6 " + (toggle ? 'md:gap-3  md:grid-cols-3 ' : 'md:grid-cols-2 md:gap-10')}>
+            <div className={"grid mt-6 gap-3 " + (toggle ? 'md:gap-3  md:grid-cols-3 ' : 'md:grid-cols-2 md:gap-10')}>
                 {
                     camps.length > 0 && camps.map((camp) =>
                         <Link key={camp._id} to={`/camps/${camp._id}`} >

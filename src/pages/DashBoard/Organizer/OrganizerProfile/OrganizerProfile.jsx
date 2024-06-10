@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 import LoadingSpiner from '../../../../components/Shared/LoadingSpiner'
+import { useEffect } from 'react'
 
 const OrganizerProfile = () => {
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const { user } = useAuth() || {}
     const axiosSecure = useAxiosSecure()
     const { data: users, isLoading } = useQuery({
@@ -22,38 +26,36 @@ const OrganizerProfile = () => {
             <Helmet>
                 <title>PureLife Health | Profile</title>
             </Helmet>
-            <div className=" mt-2 text-center text-3xl  text-blue-800">
+            <div className=" mt-2 text-center md:text-3xl  text-blue-800">
                 <h2> <span>Hi, {users?.name}</span> . Welcome back Dashboard </h2>
             </div>
-            <div className='flex justify-center items-center h-screen'>
+            <div className='md:flex justify-center items-center h-screen'>
 
-                <div className=' px-20 text-white bg-blue-300 shadow-lg rounded-2xl'>
-                    <div
+                <div className=' md:px-20  text-white bg-blue-300 shadow-lg rounded-2xl'>
+                    <div className='md:w-full  bg-blue-300 mb-4 rounded-t-lg h-28' />
 
-                        className='w-full bg-blue-300 mb-4 rounded-t-lg h-28'
-                    />
-                    <div className=' -mt-16'>
+                    <div className=' w-full -mt-16'>
                         <div className=' flex flex-col items-center  p-4 justify-center'>
                             <a href='#' className='relative block'>
                                 <img
                                     alt='profile'
                                     src={user?.photoURL}
-                                    className='mx-auto object-cover rounded-full h-40 w-50  border-2 border-white '
+                                    className='mx-auto object-cover rounded-full md:h-40 md:w-50  border-2 border-white '
                                 />
                             </a>
 
                             <p className='p-2 uppercase px-4 text-xs text-white bg-pink-500 rounded-full'>
                                 {'Organizer'}
                             </p>
-                            <p className='mt-2 text-xl font-medium text-gray-800 '>
+                            <p className='mt-2 md:text-xl font-medium text-gray-800 '>
                                 User Id: {user?.uid}
                             </p>
                         </div>
 
-                        <div className='w-full p-2 mt-4 rounded-lg'>
-                            <div className='flex gap-14 flex-wrap items-center justify-between  text-gray-600 text-xl '>
+                        <div className='md:w-full p-2 mt-4 rounded-lg'>
+                            <div className='flex flex-col md:flex-row gap-3 md:gap-14 md:flex-wrap md:items-center md:justify-between  text-gray-600 md:text-xl '>
                                 <p className='flex flex-col'>
-                                    Name
+                                    Name 
                                     <span className='font-bold  '>
                                         {users?.name ? users?.name : user?.displayName}
                                     </span>

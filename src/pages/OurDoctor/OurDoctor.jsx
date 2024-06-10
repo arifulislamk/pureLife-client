@@ -4,8 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import LoadingSpiner from '../../components/Shared/LoadingSpiner';
 import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 const OurDoctor = () => {
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const axiosPublic = useAxiosPublic()
     const { data: doctors, isLoading } = useQuery({
         queryKey: ['doctors'],

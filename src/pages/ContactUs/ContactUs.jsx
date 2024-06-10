@@ -1,15 +1,19 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 
 const ContactUs = () => {
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     return (
         <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
             <Helmet>
                 <title>PureLife Health | Contact</title>
             </Helmet>
-            <h2 className=" text-5xl font-extrabold mb-14 text-center ">Contact Us</h2>
+            <h2 className=" text-2xl md:text-3xl lg:text-5xl font-extrabold md:mb-14 text-center ">Contact Us</h2>
             <div className="grid  grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                 <div className="py-6 md:py-0 md:px-6">
-                    <h1 className=" mb-6 text-4xl font-bold">Contact Our Team</h1>
+                    <h1 className=" mb-6 text-xl md:text-4xl md:font-bold">Contact Our Team</h1>
 
                     <div className="space-y-4">
                         <p className="flex items-center">

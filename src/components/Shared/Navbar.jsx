@@ -16,9 +16,9 @@ const Navbar = () => {
         logOut()
     }
     return (
-        <div className="navbar bg-blue-200 shadow-xl mb-2 rounded-2xl">
+        <div className="navbar bg-blue-200 shadow-xl mb-2 rounded-lg md:rounded-2xl">
             <div className="navbar-start">
-                <div className="dropdown">
+                <div className="dropdown z-30">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
@@ -26,12 +26,11 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <Link to='/' className=" text-xl"><img
+                <Link to='/' className=" text-xl w-24 md:w-48"><img
                     // className='hidden md:block'
-                    className=" rounded-2xl"
+                    className=" rounded-lg md:rounded-2xl"
                     src='https://i.ibb.co/fGQ9gfb/medical-logo.png'
                     alt='logo'
-                    width='200'
                     height='100'
                 /></Link>
             </div>

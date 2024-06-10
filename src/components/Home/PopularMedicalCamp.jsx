@@ -25,15 +25,15 @@ const PopularMedicalCamp = () => {
 
     if (isLoading || camps.length < 1) return <LoadingSpiner />
     return (
-        <div className=" mt-32">
-            <h2 className=" text-5xl font-bold text-center mb-14">Popular Medical Camps</h2>
-            <div className=" grid grid-cols-2 gap-5">
+        <div className=" mt-10 md:mt-32">
+            <h2 className=" text-2xl md:text-3xl lg:text-5xl font-bold text-center mb-5 md:mb-10 lg:mb-14">Popular Medical Camps</h2>
+            <div className=" grid md:grid-cols-2 gap-5">
                 {
                     camps.length > 0 && camps.map((camp) =>
                         <Link key={camp._id} to={`/camps/${camp._id}`} >
                             <div className="p-8 bg-base-100 shadow-xl rounded-3xl" >
-                                <div className="flex gap-3 ">
-                                    <div className=" w-4/5 ">
+                                <div className="flex flex-col md:flex-row gap-3 ">
+                                    <div className=" md:w-4/5 ">
                                         <img className=" w-full rounded-lg" src={camp.image} alt="Album" />
                                     </div>
                                     <div className=" ">

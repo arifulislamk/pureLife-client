@@ -14,7 +14,7 @@ const DoctorHomeSection = () => {
     if (isLoading) return <LoadingSpiner />
     return (
         <div>
-            <div className=" text-center mt-40 mb-14">
+            <div className=" text-center md:mt-40 mb-14">
                 <h2 className=" font-extrabold text-xl md:text-5xl lg:mb-14 ">Our Popular Doctors</h2>
             </div>
             <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4 font-work">

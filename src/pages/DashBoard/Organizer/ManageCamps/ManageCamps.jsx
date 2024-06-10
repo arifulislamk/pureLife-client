@@ -8,8 +8,12 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import LoadingSpiner from "../../../../components/Shared/LoadingSpiner";
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 const ManageCamps = () => {
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
 

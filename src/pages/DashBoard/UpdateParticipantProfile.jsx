@@ -3,13 +3,17 @@ import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useEffect } from "react";
 
 const UpdateParticipantProfile = () => {
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const { user } = useAuth()
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
-    
+
     const { mutateAsync } = useMutation({
         mutationKey: ['user'],
         mutationFn: async (newUser) => {

@@ -1,12 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import JoinCampModal from "../../Modal/JoinCampModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import LoadingSpiner from "../../components/Shared/LoadingSpiner";
 
 const CampDetails = () => {
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     const { id } = useParams();
     // const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
@@ -21,7 +24,7 @@ const CampDetails = () => {
     // console.log(camps);
     const { campName, image, campFees, dateAndTime, location, healthcareProfessional, participantCount, description } = camps;
     console.log(campName)
-    
+
     const [isOpen, setIsOpen] = useState(false)
 
     const closeModal = () => {
