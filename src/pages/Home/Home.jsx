@@ -16,7 +16,10 @@ const Home = () => {
             <Helmet>
                 <title>PureLife Health | Home</title>
             </Helmet>
-            <div className=" mt-8 md:mt-14 h-[500px] ">
+            <marquee direction="">
+                <h2 className=" mt-4 text-blue-400 text-3xl"> Hi, Welcome to our medical camps website. Join Our next camps fast........ </h2>
+            </marquee>
+            <div className=" mt-6 md:mt-8 h-[500px] ">
                 <Carousel />
             </div>
             <PopularMedicalCamp />

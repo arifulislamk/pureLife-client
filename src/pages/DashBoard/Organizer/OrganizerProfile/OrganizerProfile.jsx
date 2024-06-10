@@ -27,7 +27,9 @@ const OrganizerProfile = () => {
                 <title>PureLife Health | Profile</title>
             </Helmet>
             <div className=" mt-2 text-center md:text-3xl  text-blue-800">
-                <h2> <span>Hi, {users?.name}</span> . Welcome back Dashboard </h2>
+                <marquee>
+                    <h2> <span>Hi, {users?.name || user.displayName}</span> . Welcome back Dashboard </h2>
+                </marquee>
             </div>
             <div className='md:flex justify-center items-center h-screen'>
 
@@ -54,7 +56,7 @@ const OrganizerProfile = () => {
                         <div className='md:w-full p-2 mt-4 rounded-lg'>
                             <div className='flex flex-col md:flex-row gap-3 md:gap-14 md:flex-wrap md:items-center md:justify-between  text-gray-600 md:text-xl '>
                                 <p className='flex flex-col'>
-                                    Name 
+                                    Name
                                     <span className='font-bold  '>
                                         {users?.name ? users?.name : user?.displayName}
                                     </span>

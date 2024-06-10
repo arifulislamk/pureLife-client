@@ -98,7 +98,7 @@ const RegisteredCamps = () => {
                                 <td>{camp.participantName}</td>
                                 <td>
                                     <button
-                                        disabled={camp?.status}
+                                        disabled={camp?.status || camp?.campFees === 'Free'}
                                         onClick={() => {
                                             setIsOpen(true)
                                             setId(camp._id)

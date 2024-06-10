@@ -24,7 +24,10 @@ const ParticipantProfile = () => {
             </Helmet>
 
             <div className=" mt-2 text-center md:text-3xl  text-blue-800">
-                <h2> <span>Hi, {user.displayName}</span> . Welcome back Dashboard </h2>
+                <marquee direction="left">
+                    <h2> <span>Hi, {users?.name || user.displayName}</span> . Welcome back Dashboard </h2>
+                </marquee>
+
             </div>
             <div className='md:flex justify-center items-center'>
                 <div className=' md:px-20 text-white bg-blue-300 shadow-lg rounded-2xl '>

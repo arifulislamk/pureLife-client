@@ -104,8 +104,8 @@ const ManageRegisteredCamps = () => {
                                 <td>{camp.campFees}</td>
                                 <td>
                                     <button
-                                        className={" px-3 py-2 rounded-lg w-20 font-medium" + (camp?.status ? " bg-success" : " bg-error text-white")} >
-                                        {camp?.status ? camp?.status : 'Unpaid'}
+                                        className={" px-3  py-2 rounded-lg w-20 font-medium" + (camp?.status ? " bg-success" : " bg-error text-white")} >
+                                        {camp?.status ? camp?.status : camp?.campFees === 'Free' ? "Free": 'Unpaid' }
                                     </button>
                                 </td>
                                 <td>

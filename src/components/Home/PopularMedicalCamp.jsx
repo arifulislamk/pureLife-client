@@ -39,7 +39,11 @@ const PopularMedicalCamp = () => {
                                     <div className=" ">
                                         <p>Location: {camp.location}</p>
                                         <p>Fees: {camp.campFees}</p>
-                                        <p>Date: {camp.dateAndTime}</p>
+                                        <p>Date: {new Date(camp.dateAndTime).toLocaleDateString('en-GB', {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: 'numeric'
+                                        })}</p>
                                         <p>Participant : {camp.participantCount}</p>
                                         <div className=" mt-14">
                                             <h2 className="card-title mb-5">{camp.campName}</h2>

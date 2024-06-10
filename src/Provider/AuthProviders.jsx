@@ -80,6 +80,7 @@ const AuthProvider = ({ children }) => {
         console.log(user);
         const currentUser = {
             email: user?.email,
+            name: user?.displayName,
             role: 'participant',
             photo: user?.photoURL,
         }
