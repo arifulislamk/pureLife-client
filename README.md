@@ -21,7 +21,11 @@ This Website organizes medical camps such as blood donation and health check-ups
 # Participant(Newuser) :
 - Payment History: All payment done by user with tabel formate.
 - Registred Camps : Joining Requested camps table formate .
-
+# How setup this repo
+- install npm i
+- change mongodb link
+- firebase env add , localurl add in env file in the client env
+- env file for server site
 #  npm package name
 - react-hook-from(useForm) 
 - Tanstack Queary
