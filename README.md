@@ -1,5 +1,6 @@
-# Assignment Type : (Medical Camp)
-- Mi-12 Assignment Requirement assignment12_category_0017
+# Website Type : (Medical Camp)
+* ClientSite: https://github.com/arifulislamk/pureLife-client
+* ServerSite: https://github.com/arifulislamk/pureLife-server
 
 # WebSite Name, Live Link , Organizer user and password
 * PureLife Health
@@ -7,7 +8,8 @@
 * Password : khan12
 * Link : https://purelife-health.web.app/
 
-
+# Overview
+Our website organizes medical camps such as blood donation and health check-ups. Participants can join easily, with some camps being free and others requiring payment via Stripe. Organizers manage camp details for seamless registration. We connect healthcare initiatives with participants, ensuring a straightforward experience for all involved.
 
 # Features or Section Describe of my website 
 
