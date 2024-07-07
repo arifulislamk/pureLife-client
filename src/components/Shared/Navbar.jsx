@@ -3,7 +3,6 @@ import useAuth from "../../hooks/useAuth";
 import useOrganizer from "../../hooks/useOrganizer";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import LoadingSpiner from "./LoadingSpiner";
 
 const Navbar = () => {
     const { user, logOut } = useAuth()
@@ -18,7 +17,7 @@ const Navbar = () => {
         }
     })
     // console.log(users)
-    if (isLoading) return <LoadingSpiner />
+    // if (isLoading) return <><p>Navbar now processing</p></>
     const navItems = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/available-camps'>Available Camps</NavLink></li>
